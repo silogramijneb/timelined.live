@@ -34,7 +34,16 @@
 
 <h6>Creating a Swapfile</h6>
 
-<code>sudo fallocate -l 4GB /swapfile<br>sudo dd if=/dev/zero of=/swapfile bs=1024 count=1048576<br>sudo chmod 600 /swapfile<br>sudo mkswap /swapfile<br>sudo swapon /swapfile<br>sudo vim /etc/fstab:<br></t>/swapfile swap swap defaults 0 0<br>sudo mount -a</code>
+<pre>
+<code>sudo fallocate -l 4GB /swapfile</code>
+<code>sudo dd if=/dev/zero of=/swapfile bs=1024 count=1048576</code>
+<code>sudo chmod 600 /swapfile</code>
+<code>sudo mkswap /swapfile</code>
+<code>sudo swapon /swapfile/code>
+<code>sudo vim /etc/fstab:</code>
+	<code>/swapfile swap swap defaults 0 0</code>
+<code>sudo mount -a</code>
+</pre>
 
 <p>A swapfile essentially allows the Linux operating system to use the system disk (HDD or SSD) as virtual RAM when its available memory is running low. Read more about swapfiles <a href="https://averagelinuxuser.com/linux-swap/">here</a>. For our Raspberry Pi with only 2GB of RAM, it is pretty much essential.</p>
 
@@ -44,7 +53,17 @@
 
 <p>Uncomment these lines ... </p>
 
-<code># Authentication <br>	LoginGraceTime 2m<br>	PermitRootLogin prohibit-password<br>	StrictModes yes<br>	MaxAuthTries 6<br>	MaxSessions 10<br><br>PrintMotD yes<br>PrintLastLog yes</code>
+<pre>
+<code># Authentication
+	LoginGraceTime 2m
+	PermitRootLogin prohibit-password
+	StrictModes yes
+	MaxAuthTries 6
+	MaxSessions 10
+
+PrintMotD yes<
+PrintLastLog yes</code>
+</pre>
 
 <p>This will make all SSH connections to the server more secure and prevent different types of attacks through SSH.</p>
 
