@@ -140,7 +140,7 @@ server {
 	# send all non-media requests to Django server
 	location / {
 		uwsgi_pass	django;
-		include			/home/ubuntu/website/timelined/website/uwsgi_params;
+		include		/home/ubuntu/website/timelined/website/uwsgi_params;
 	}
 }</code></pre>
 <p>Now we need to create the <code>uwsgi_params</code> file: </p>
