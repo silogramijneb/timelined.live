@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'main', # homepage, about, contact, etc.
+    'servicepro', # pages related to SP side
+    'client', # pages related to SC side
+    'thirdparty', # pages related to 3P side
 ]
 
 MIDDLEWARE = [
@@ -57,7 +61,12 @@ ROOT_URLCONF = 'website.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'main', 'templates', 'main'),
+            os.path.join(BASE_DIR, 'servicepro', 'templates', 'servicepro'),
+            os.path.join(BASE_DIR, 'client', 'templates', 'client'),
+            os.path.join(BASE_DIR, 'thirdparty', 'templates', 'thirdparty'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
