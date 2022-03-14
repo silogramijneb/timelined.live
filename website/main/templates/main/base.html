@@ -29,9 +29,16 @@
 				margin-top: 5rem;
 			}
 
-			div.footer-header {
+			div.page-container {
+				position: relative;
+				min-height: 100vh;
+			}
+
+			div.footer-container {
 				position: absolute;
 				bottom: 0;
+				width: 100%;
+				height: 2.5rem;
 			}
 		</style>
 	</head>
@@ -109,7 +116,7 @@
 		</header>
 		
 
-		<div class="content">
+		<div class="page-container">
 			{% block content %}
 			{% endblock %}
 		</div>
