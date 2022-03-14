@@ -17,39 +17,10 @@
 				--font-timelined-primary: "Poppins", sans-serif;
 			}
 
-			div.navbar {
-				display: block;
-				width: 100%;
-				height: 60px;
-				background-color: white;
-				position: fixed;
-				top: 0;
-				left: 0;
-			}
-
-			div.main-nav-toggle { display: inline-block; }
-
-			div.nav-hero-left {
-				display: block;
-				position: fixed;
-				top: 1rem;
-				left: 2rem;
-			}
-
-			div.nav-hero-left a {
-				display: inline-block;
-				text-decoration: none;
+			.nav-hero {
 				color: black;
 				font-family: var(--font-timelined-primary);
 				font-size: 28px;
-			}
-
-			div.nav-links a {
-				display: inline-block;
-				text-decoration: none;
-				color: #727272;
-				font-size: 24px;
-				text-align: right;
 			}
 		</style>
 	</head>
@@ -70,7 +41,7 @@
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="/">timelined.live</a>
+				<a class="navbar-brand nav-hero" href="/">timelined.live</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -83,7 +54,7 @@
 				</div>
 			</div>
 		</nav>
-		
+
 		<div class="content">
 			{% block content %}
 			{% endblock %}
