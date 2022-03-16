@@ -1,0 +1,31 @@
+{% extends "lockdown/base.html" %}
+
+{% block title %}timelined.live coming soon ...{% endblock %}
+
+{% block content %}
+<!-- Mashead header -->
+<header class="masthead">
+  <div class="container px-5">
+      <div class="row gx-5 align-items-center">
+          <div class="col-lg-6" style="margin-top: 0px;">
+              <!-- Mashead text -->
+              <div class="mb-2 mb-lg-0 text-center text-lg-start">
+                  <h1 class="display-1 lh-1 mb-3" style="font-weight: bold;">timelined.live</h1>
+                  <p class="lead fw-normal text-muted mb-5">Coming soon ...</p>
+                  <div class="card" style="margin-top: 2rem;">
+                    {% if form %}
+                    <form class="password-form" action="" method="post">{% csrf_token %}
+                      {{ form.as_p }}
+                      <input type="submit" value="Access"/>
+                    </form>
+                    {% endif %}
+                  </div> 
+              </div>
+          </div>
+          <div class="col-lg-6">
+              {% load static %}
+              <img style="width: 100%;" src="{% static 'admin/img/hero-main.png' %}">
+          </div>
+      </div>
+  </div>
+</header>
