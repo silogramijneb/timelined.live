@@ -158,7 +158,7 @@
 					<ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
 						<li class="nav-item"><a class="nav-link me-lg-3" href="#features">Features</a></li>
 						<li class="nav-item"><a class="nav-link me-lg-3" href="#contact">Contact</a></li>
-						<li class="nav-item"><a class="nav-link me-lg-3" href="#signup">Sign Up</a></li>
+						<li class="nav-item"><a class="nav-link me-lg-3" href="#signup" data-bs-toggle="modal" data-bs-target="#signUpModal">Sign Up</a></li>
 					</ul>
 					<button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#loginModal">
 						<span class="d-flex align-items-center">
@@ -180,6 +180,8 @@
 		</div>
 
 		<!-- MODALS -->
+
+		<!-- Login Modal -->
 		<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered">
 				<div class="modal-content">
@@ -188,7 +190,7 @@
 						<button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-body border-0 p-4">
-						<form id="signupForm">
+						<form id="loginForm">
                             <!-- Email address input-->
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
@@ -203,6 +205,55 @@
                                 <div class="invalid-feedback" data-sb-feedback="password:required">A password is required.</div>
                             </div>
 							<a href="#signUpModal" class="nav-link text-center mb-3">Don't have an account? Sign up here</a>
+							<!-- Submit success message-->
+                            <!---->
+                            <!-- This is what your users will see when the form-->
+                            <!-- has successfully submitted-->
+                            <div class="d-none" id="submitSuccessMessage">
+                                <div class="text-center mb-3">
+                                    <div class="fw-bolder">Form submission successful!</div>
+                                    To activate this form, sign up at
+                                    <br />
+                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                                </div>
+                            </div>
+                            <!-- Submit error message-->
+                            <!---->
+                            <!-- This is what your users will see when there is-->
+                            <!-- an error submitting the form-->
+                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                            <!-- Submit Button-->
+                            <div class="d-grid"><button class="btn btn-primary rounded-pill btn-lg disabled" id="submitButton" type="submit">Submit</button></div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Sign Up Modal -->
+		<div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header bg-gradient-primary-to-secondary p-4">
+						<h5 class="modal-title font-alt fs-4 lh-1 text-black text-center" id="signUpModalLabel" style="font-weight: bold">Create an account</h5>
+						<button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body border-0 p-4">
+						<form id="signUpForm">
+                            <!-- Email address input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
+                                <label for="email">Email address</label>
+                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                            </div>
+                            <!-- Phone number input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="password" type="password" placeholder="password" data-sb-validations="required,password" />
+                                <label for="phone">Password</label>
+                                <div class="invalid-feedback" data-sb-feedback="password:required">A password is required.</div>
+                            </div>
+							<a href="#loginModal" class="nav-link text-center mb-3">Already have an account? Login</a>
 							<!-- Submit success message-->
                             <!---->
                             <!-- This is what your users will see when the form-->
