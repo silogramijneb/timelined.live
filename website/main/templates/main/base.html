@@ -252,6 +252,17 @@
 								<label for="company">Company</label>
 								<div class="invalid-feedback" data-sb-feedback="company:required">A company name is required.</div>
 							</div>
+							<!-- Account type -->
+							<div class="form-floating mb-3">
+								<input class="form-control" id="accountType" type="radio" placeholder="Account type" data-sb-validations="required"/>
+								<label for="accountType">Select your Account type</label>
+								<input class="form-control" id="serviceProfessional" type="radio" required/>
+								<label for="serviceProfessional">Service Professional</label>
+								<input class="form-control" id="thirdParty" type="radio" required/>
+								<label for="thirdParty">Third Party</label>
+								<input class="form-control" id="client" type="radio" required/>
+								<label for="client">Client (Regular User)</label>
+							</div>
                             <!-- Email address input-->
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
