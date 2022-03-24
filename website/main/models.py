@@ -43,5 +43,8 @@ class Event(models.Model):
 class Image(model.Model):
     image = models.ImageField(upload_to = 'uploads/')
 
-class Document(models.Model)
-    
+class Document(models.Model):
+    file = models.FileField(upload_to='files/', null=True, verbose_name="")
+
+    def __str__(self):
+        return self.name + ": " + str(self.filepath)
