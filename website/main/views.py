@@ -5,3 +5,6 @@ from django.http import HttpResponse
 
 def index(response):
     return render(response, 'main/index.html')
+
+def dashboard(response):
+    return render(response, 'main/dashboard.html')
