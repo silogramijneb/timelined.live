@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models import Model
 
+'''
 # Create your models here.
 class ServiceProvider(models.Model):
     provider_name = models.CharField(max_length= 30)
@@ -48,3 +49,4 @@ class Document(models.Model):
 
     def __str__(self):
         return self.name + ": " + str(self.filepath)
+'''
