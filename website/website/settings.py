@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'servicepro', # pages related to SP side
     'client', # pages related to SC side
     'thirdparty', # pages related to 3P side
+    'dashboard',
 ]
 
 MIDDLEWARE = [
