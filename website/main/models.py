@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models import Model
 
-'''
+
 # Create your models here.
 class ServiceProvider(models.Model):
     provider_name = models.CharField(max_length= 30)
@@ -21,9 +21,11 @@ class User(models.Model):
     password = models.CharField(max_length=30)
     address = models.CharField(max_length=100)
     phone = models.CharField(max_length=9)
+    email = models.CharField(max_length = 64)
     provider_permissions = models.OneToOneField(ServiceProvider, on_delete=models.CASCADE)
     client_permissions = models.OneToOneField(Client, on_delete=models.CASCADE)
     thirdParty_permissions = models.OneToOneField(thirdParty, on_delete=models.CASCADE)
+
 
 class Timeline(models.Model):
     events = models.oneToManyField(Event, on_delete = models.CASCADE)
@@ -49,4 +51,4 @@ class Document(models.Model):
 
     def __str__(self):
         return self.name + ": " + str(self.filepath)
-'''
+
