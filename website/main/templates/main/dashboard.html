@@ -30,10 +30,12 @@
 			<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 	
 				<!-- Sidebar - Brand -->
-				<div class="sidebar-brand-icon">
-					{% load static %}
-					<img class="max-width: 25px;" src="{% static 'admin/img/alt-logo.png' %}">
-				</div>
+				<a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+					<div class="sidebar-brand-icon">
+						{% load static %}
+						<img class="max-width: 25px;" src="{% static 'admin/img/alt-logo.png' %}">
+					</div>
+				</a>
 				<a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
 					<div class="sidebar-brand-text fw-bold mx-3" style="font-family: var(--font-timelined-primary); text-transform: lowercase; font-size: 20px;">timelined.live</div>
 				</a>
