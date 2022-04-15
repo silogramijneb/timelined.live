@@ -14,6 +14,7 @@ class User(models.Model):
     provider_permissions = models.OneToOneField(ServiceProvider, on_delete=models.CASCADE)
     client_permissions = models.OneToOneField(Client, on_delete=models.CASCADE)
     thirdParty_permissions = models.OneToOneField(thirdParty, on_delete=models.CASCADE)
+    timeline = models.ForeignKey(Timeline, on_delete=models.CASCADE) # many users to one timeline
     class Meta:
         abstract = True
 
@@ -23,8 +24,8 @@ class ServiceProvider(User):
     website = models.CharField(max_length= 50)
 
 class Client(User):
-    client_name: models.CharField(max_length= 30)
-    date_of_birth: models.DateField()
+    client_name = models.CharField(max_length= 30)
+    date_of_birth = models.DateField()
 
 class thirdParty(User) :
     third_party_name = models.CharField(max_length= 30)
@@ -33,6 +34,7 @@ class thirdParty(User) :
 
 class Image(models.Model):
     image = models.ImageField(upload_to = 'uploads/')
+    event = models.ForeignKey(Event) # many images to one event
 
 class Event(models.Model):
     status = models.CharField(max_length = 30)
@@ -42,16 +44,18 @@ class Event(models.Model):
     deadline = models.DateField()
     date_modified = models.DateField()
     date_ended = models.DateField()
-    collaborators = models.oneToManyField(User, on_delete = models.CASCADE)
-    images = models.oneToManyField(Image, on_delete = models.CASCADE)
+    #collaborators = models.oneToManyField(User, on_delete = models.CASCADE)
+    #images = models.oneToManyField(Image, on_delete = models.CASCADE)
+    timeline = models.ForeignKey(Timeline)  # many events to one timeline
 
 class Timeline(models.Model):
-    events = models.oneToManyField(Event, on_delete = models.CASCADE)
-    users = models.oneToManyField(User, on_delete = models.CASCADE)
-
+    #events = models.oneToManyField(Event, on_delete = models.CASCADE)
+    #users = models.oneToManyField(User, on_delete = models.CASCADE)
+    user = models.ForeignKey(User) # many timelines to one user
 
 class Document(models.Model):
     file = models.FileField(upload_to='files/', null=True, blank = True)
+    event = models.ForeignKey(Event) # many documents to one event
 
     def __str__(self):
         return self.name + ": " + str(self.filepath)
