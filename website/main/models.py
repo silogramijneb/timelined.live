@@ -11,11 +11,11 @@ class User(models.Model):
     user_id = = models.CharField(max_length = 16)
 
     #registering credentials
-    user_name = models.CharField(max_length=30)
+    email = models.CharField(max_length = 64)
     password = models.CharField(max_length=30)
     address = models.CharField(max_length=100)
     phone = models.CharField(max_length=10)
-    email = models.CharField(max_length = 64)
+    
     provider_permissions = models.OneToOneField(ServiceProvider, on_delete=models.CASCADE)
     client_permissions = models.OneToOneField(Client, on_delete=models.CASCADE)
     thirdParty_permissions = models.OneToOneField(thirdParty, on_delete=models.CASCADE)
@@ -60,7 +60,7 @@ class Event(models.Model):
     collaborators = models.oneToManyField(User, on_delete = models.CASCADE)
 
     pdf = models.oneToManyField(Document, on_delete = models.CASCADE)
-    images = models.oneToManyField(Image, on_delete = models.CASCADE)
+    images = models.foreignKey(Image, on_delete = models.CASCADE)
 
 class Timeline(models.Model):
     events = models.oneToManyField(Event, on_delete = models.CASCADE)
