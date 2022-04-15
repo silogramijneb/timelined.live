@@ -1,20 +1,10 @@
 from django.db import models
 from django.db.models import Model
 
+
 # Create your models here.
-class ServiceProvider(models.Model):
-    provider_name = models.CharField(max_length= 30)
-    website = models.CharField(max_length= 50)
 
-class Client(models.Model):
-    client_name: models.CharField(max_length= 30)
-    date_of_birth: models.DateField()
-
-class thirdParty(models.Model) : 
-    third_party_name = models.CharField(max_length= 30)
-    website = models.CharField(max_length= 50)
-    #category = models.Model()
-
+# Abstract class for the specific types to inherit
 class User(models.Model):
 
     #create user id
@@ -24,25 +14,30 @@ class User(models.Model):
     user_name = models.CharField(max_length=30)
     password = models.CharField(max_length=30)
     address = models.CharField(max_length=100)
-    phone = models.CharField(max_length=9)
+    phone = models.CharField(max_length=10)
+    email = models.CharField(max_length = 64)
+    provider_permissions = models.OneToOneField(ServiceProvider, on_delete=models.CASCADE)
+    client_permissions = models.OneToOneField(Client, on_delete=models.CASCADE)
+    thirdParty_permissions = models.OneToOneField(thirdParty, on_delete=models.CASCADE)
+    class Meta:
+        abstract = True
 
-    #details of user specific to their use case
-    serviceProvider_detail = models.OneToOneField(ServiceProvider)
-    client_detail = models.OneToOneField(Client)
-    thirdParty_detail = models.OneToOneField(thirdParty)
+# ServiceProvider, Client, and thirdParty inherit attributes from User
+class ServiceProvider(User):
+    provider_name = models.CharField(max_length= 30)
+    website = models.CharField(max_length= 50)
 
-    #Data to show what timelines the user has specific permissions to view
-    provider_permissions = models.OneToManyField(Timeline, on_delete=models.CASCADE)
-    client_permissions = models.OneToManyField(Timeline, on_delete=models.CASCADE)
-    thirdParty_permissions = models.OneToManyField(thirdParty, on_delete=models.CASCADE)
+class Client(User):
+    client_name: models.CharField(max_length= 30)
+    date_of_birth: models.DateField()
 
-class Timeline(models.Model):
-    #timeline id
-    timeline_id = models.CharField(max_length = 16)
-    #each Timeline contains many events and many users
-    events = models.oneToManyField(Event, on_delete = models.CASCADE)
-    users = models.oneToManyField(User, on_delete = models.CASCADE)
+class thirdParty(User) :
+    third_party_name = models.CharField(max_length= 30)
+    website = models.CharField(max_length= 50)
+    #category = models.Model()
 
+class Image(models.Model):
+    image = models.ImageField(upload_to = 'uploads/')
 
 class Event(models.Model):
 
@@ -67,8 +62,10 @@ class Event(models.Model):
     pdf = models.oneToManyField(Document, on_delete = models.CASCADE)
     images = models.oneToManyField(Image, on_delete = models.CASCADE)
 
-class Image(model.Model):
-    image = models.ImageField(upload_to = 'uploads/')
+class Timeline(models.Model):
+    events = models.oneToManyField(Event, on_delete = models.CASCADE)
+    users = models.oneToManyField(User, on_delete = models.CASCADE)
+
 
 class Document(models.Model):
     file = models.FileField(upload_to='files/', null=True, blank = True)
