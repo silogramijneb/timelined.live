@@ -6,6 +6,11 @@ from django.db.models import Model
 
 # Abstract class for the specific types to inherit
 class User(models.Model):
+
+    #create user id
+    user_id = models.CharField(max_length = 16)
+
+    #registering credentials
     user_name = models.CharField(max_length=30)
     password = models.CharField(max_length=30)
     address = models.CharField(max_length=100)
@@ -37,16 +42,29 @@ class Image(models.Model):
     event = models.ForeignKey(Event) # many images to one event
 
 class Event(models.Model):
+
+    #status of event
     status = models.CharField(max_length = 30)
+
+    #description of event
     description = models.CharField(max_length = 256)
+    
+    #location of event
     location = models.CharField(max_length = 100)
+
+    #dates that are critical for time sensitivity of event
     date_created = models.DateField()
     deadline = models.DateField()
     date_modified = models.DateField()
     date_ended = models.DateField()
-    #collaborators = models.oneToManyField(User, on_delete = models.CASCADE)
-    #images = models.oneToManyField(Image, on_delete = models.CASCADE)
+
     timeline = models.ForeignKey(Timeline)  # many events to one timeline
+
+    #Who is allowed to edit the Timeline
+    #collaborators = models.oneToManyField(User, on_delete = models.CASCADE)
+
+    #pdf = models.oneToManyField(Document, on_delete = models.CASCADE)
+    #images = models.oneToManyField(Image, on_delete = models.CASCADE)
 
 class Timeline(models.Model):
     #events = models.oneToManyField(Event, on_delete = models.CASCADE)
