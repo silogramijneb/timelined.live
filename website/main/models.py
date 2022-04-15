@@ -8,7 +8,7 @@ from django.db.models import Model
 class User(models.Model):
 
     #create user id
-    user_id = = models.CharField(max_length = 16)
+    user_id = models.CharField(max_length = 16)
 
     #registering credentials
     email = models.CharField(max_length = 64)
