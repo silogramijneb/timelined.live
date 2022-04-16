@@ -4,6 +4,7 @@ from django.db.models import Model
 
 # Create your models here.
 
+
 # Abstract class for the specific types to inherit
 class User(models.Model):
 
@@ -29,7 +30,7 @@ class ServiceProvider(User):
     website = models.CharField(max_length= 50)
 
 class Client(User):
-    client_name = models.CharField(max_length= 30)
+    models.CharField(max_length= 30)
     date_of_birth = models.DateField()
 
 class thirdParty(User) :
@@ -37,9 +38,10 @@ class thirdParty(User) :
     website = models.CharField(max_length= 50)
     #category = models.Model()
 
-class Image(models.Model):
-    image = models.ImageField(upload_to = 'uploads/')
-    event = models.ForeignKey(Event) # many images to one event
+class Timeline(models.Model):
+    #events = models.oneToManyField(Event, on_delete = models.CASCADE)
+    #users = models.oneToManyField(User, on_delete = models.CASCADE)
+    user = models.ForeignKey(User) # many timelines to one user
 
 class Event(models.Model):
 
@@ -66,10 +68,9 @@ class Event(models.Model):
     #pdf = models.oneToManyField(Document, on_delete = models.CASCADE)
     #images = models.oneToManyField(Image, on_delete = models.CASCADE)
 
-class Timeline(models.Model):
-    #events = models.oneToManyField(Event, on_delete = models.CASCADE)
-    #users = models.oneToManyField(User, on_delete = models.CASCADE)
-    user = models.ForeignKey(User) # many timelines to one user
+class Image(models.Model):
+    image = models.ImageField(upload_to = 'uploads/')
+    event = models.ForeignKey(Event) # many images to one event
 
 class Document(models.Model):
     file = models.FileField(upload_to='files/', null=True, blank = True)
