@@ -17,10 +17,10 @@ class User(models.Model):
     address = models.CharField(max_length=100)
     phone = models.CharField(max_length=10)
     email = models.CharField(max_length = 64)
-    provider_permissions = models.OneToOneField(ServiceProvider, on_delete=models.CASCADE)
-    client_permissions = models.OneToOneField(Client, on_delete=models.CASCADE)
-    thirdParty_permissions = models.OneToOneField(thirdParty, on_delete=models.CASCADE)
-    timeline = models.ForeignKey(Timeline, on_delete=models.CASCADE) # many users to one timeline
+    #provider_permissions = models.OneToOneField(ServiceProvider, on_delete=models.CASCADE)
+    #client_permissions = models.OneToOneField(Client, on_delete=models.CASCADE)
+    #thirdParty_permissions = models.OneToOneField(thirdParty, on_delete=models.CASCADE)
+    #timeline = models.ForeignKey(Timeline, on_delete=models.CASCADE) # many users to one timeline
     class Meta:
         abstract = True
 
@@ -41,6 +41,7 @@ class thirdParty(User) :
 class Timeline(models.Model):
     #events = models.oneToManyField(Event, on_delete = models.CASCADE)
     #users = models.oneToManyField(User, on_delete = models.CASCADE)
+    timeline_id = models.CharField(max_length=16)
     user = models.ForeignKey(User) # many timelines to one user
 
 class Event(models.Model):
@@ -60,7 +61,7 @@ class Event(models.Model):
     date_modified = models.DateField()
     date_ended = models.DateField()
 
-    timeline = models.ForeignKey(Timeline)  # many events to one timeline
+    timeline = models.ForeignKey(Timeline, on_delete=models.CASCADE)  # many events to one timeline
 
     #Who is allowed to edit the Timeline
     #collaborators = models.oneToManyField(User, on_delete = models.CASCADE)
@@ -70,11 +71,15 @@ class Event(models.Model):
 
 class Image(models.Model):
     image = models.ImageField(upload_to = 'uploads/')
-    event = models.ForeignKey(Event) # many images to one event
+    event = models.ForeignKey(Event, on_delete=models.CASCADE) # many images to one event
 
 class Document(models.Model):
     file = models.FileField(upload_to='files/', null=True, blank = True)
-    event = models.ForeignKey(Event) # many documents to one event
+    event = models.ForeignKey(Event, on_delete=models.CASCADE) # many documents to one event
 
     def __str__(self):
         return self.name + ": " + str(self.filepath)
+
+class UserTimeline(models.Model):
+    user = models.ForeignKey(User.user_id, on_delete=models.CASCADE)
+    timeline = models.Foreignkey(Timeline.timeline_id, on_delete=models.CASCADE)
