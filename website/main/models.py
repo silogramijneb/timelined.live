@@ -42,7 +42,7 @@ class Timeline(models.Model):
     #events = models.oneToManyField(Event, on_delete = models.CASCADE)
     #users = models.oneToManyField(User, on_delete = models.CASCADE)
     timeline_id = models.CharField(max_length=16)
-    user = models.ForeignKey(User) # many timelines to one user
+    user = models.ForeignKey(Client, on_delete=models.PROTECT) # many timelines to one user
 
 class Event(models.Model):
 
@@ -81,5 +81,5 @@ class Document(models.Model):
         return self.name + ": " + str(self.filepath)
 
 class UserTimeline(models.Model):
-    user = models.ForeignKey(User.user_id, on_delete=models.CASCADE)
-    timeline = models.Foreignkey(Timeline.timeline_id, on_delete=models.CASCADE)
+    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    timeline = models.ForeignKey(Timeline, on_delete=models.CASCADE)
