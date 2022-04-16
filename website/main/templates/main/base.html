@@ -121,16 +121,16 @@
 			document.getElementById("serviceProfessional").addEventListener("click", () => {
 				birthday.style.display = "none";
 				company.style.display = "block";
-			})
+			});
 			document.getElementById("thirdParty").addEventListener("click", () => {
 				birthday.style.display = "none";
 				company.style.display = "block";
-			})
+			});
 			document.getElementById("client").addEventListener("click", () => {
 				birthday.style.display = "block";
 				company.style.display = "none";
-			})
-		})
+			});
+		});
 	</script>
 
 	<!--
@@ -286,6 +286,11 @@
 								<input class="form-control" id="c" type="text" placeholder="Enter your company name ..." data-sb-validations="required"/>
 								<label for="company">Company</label>
 								<div class="invalid-feedback" data-sb-feedback="company:required">A company name is required.</div>
+							</div>
+							<div class="form-floating mb-3" id="birthday" style="display:none">
+								<input class="form-control" id="date-of-birth" type="date" placeholder="Enter your birthdate" data-sb-validations="required"/>
+								<label for="company">Birthdate</label>
+								<div class="invalid-feedback" data-sb-feedback="company:required">A birthdate is required.</div>
 							</div>
 							<!--
 							<div class="form-floating mb-3" style="display:none" id="birthday">
