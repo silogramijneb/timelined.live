@@ -50,7 +50,7 @@ class ThirdParty(Profile) :
 
 class Document(models.Model):
     id = models.BigIntegerField(primary_key=True)
-    file = models.FileField(upload_to='files/', null=True, blank = True)
+    file = models.FileField(upload_to='media/', null=True, blank = True)
 
     def __str__(self):
         return self.filename + ": " + str(self.filepath)

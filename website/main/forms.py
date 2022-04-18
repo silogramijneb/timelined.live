@@ -5,10 +5,20 @@ from django import forms
 from .models import Profile, Timeline, Event
 
 
-class RegistrationForm(UserCreationForm):
+class ClientRegistrationForm(UserCreationForm):
     class Meta:
-        model = Profile
-        fields = ['last_name', 'first_name', 'username', 'password1', 'password2', 'phone']
+        model = Client
+        fields = ['last_name', 'first_name', 'date_of_birth', 'username', 'password1', 'password2', 'phone']
+
+class ProfessionalRegistrationForm(UserCreationForm):
+    class Meta:
+        model = ServiceProvider
+        fields = ['first_name', 'last_name', 'provider_name', 'website', 'username', 'password1', 'password2']
+
+class ThirdPartyRegistrationForm(UserCreationForm):
+    class Meta:
+        model = ThirdParty
+        fields = ['first_name', 'last_name', 'third_party_name', 'website', 'username', 'password1', 'password2']
 
 class TimelineCreationForm(ModelForm):
     class Meta:
@@ -19,7 +29,6 @@ class EventCreationForm(ModelForm):
     class Meta:
         model = Event
         fields = ['name', 'description', 'location', 'deadline', 'file']
-        widgets = { 'timeline_id' : forms.HiddenInput 
-                    }
+        widgets = { 'timeline_id' : forms.HiddenInput }
 
         
