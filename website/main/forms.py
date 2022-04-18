@@ -2,7 +2,7 @@ from dataclasses import field
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from .models import Profile, Timeline, Event
+from .models import *
 
 
 class ClientRegistrationForm(UserCreationForm):
