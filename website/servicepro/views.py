@@ -3,4 +3,4 @@ from django.http import HttpResponse
 
 # Create your views here.
 def dashboard(response):
-    return render(response, 'servicepro/dashboard_main.html')
+    return render(response, 'servicepro/main/dashboard_main.html')
