@@ -134,7 +134,7 @@ def index(response):
     # Defult context for our page
     context = { "registration_form":  ProfessionalRegistrationForm() }
     # Render defult page with updated context
-    result = render(response, 'main/index.html', context) 
+    result = render(response, 'templates/index.html', context) 
 
     # POST: Update Context
     if response.method == 'POST':
@@ -175,5 +175,5 @@ def maketimeline(response):
     context = {"timeline" : locals().get('timeline')}
    
     # Return the timeline to the front end
-    return render(response, 'main/index.html', context) 
+    return render(response, 'templates/index.html', context) 
 
