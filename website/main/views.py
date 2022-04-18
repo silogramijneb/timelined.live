@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from main.models import Client, ServiceProvider, thirdParty, Timeline, Event
+from main.models import *
 
 # These functions route the HTML in the templates folder to the correct view
 
@@ -16,7 +16,7 @@ def getSP(username):
 
 # Get the third party object based on the username
 def getTP(username):
-    thirdParty.objects.filter(user_name = username)
+    ThirdParty.objects.filter(user_name = username)
 
 ### Define more functions for queries (Not sure if this is the right file for this)
 
