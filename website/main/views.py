@@ -177,7 +177,7 @@ def maketimeline(response):
     # Return the timeline to the front end
     return render(response, 'templates/index.html', context)
 
-# TODO: redirect dashboard to specific app template dashboard
+# TODO: render different aspects of dashboard based on user privileges
 def dashboard(response):
     return render(response, 'dashboard_main.html')
 
