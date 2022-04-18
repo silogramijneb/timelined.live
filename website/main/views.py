@@ -179,5 +179,5 @@ def maketimeline(response):
 
 # TODO: redirect dashboard to specific app template dashboard
 def dashboard(response):
-    return render(response, 'servicepro/dashboard_main.html')
+    return render(response, 'dashboard_main.html')
 
