@@ -19,5 +19,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("main.urls")), # index view (front page)
-    path('dashboard/', include("main.urls")), # dashboard page
+    path('dashboard/', include("servicepro.urls")), # SP dashboard page
 ]

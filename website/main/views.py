@@ -7,7 +7,7 @@ from main.models import User, Client, ServiceProvider, ThirdParty, Timeline, Eve
 from .forms import ThirdPartyRegistrationForm, ClientRegistrationForm, ProfessionalRegistrationForm, TimelineCreationForm, EventCreationForm
 from .decorators import unauthenticated_user 
 from .enums import EventStatus
-import json
+import json, random
 
 
 # These functions route the HTML in the templates folder to the correct view

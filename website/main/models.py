@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 # Create your models here.
 
@@ -32,7 +33,7 @@ class Client(Profile):
     class Meta:
         db_table = 'Client'
 
-    date_of_birth = models.DateField()
+    date_of_birth = models.DateField(default=timezone.now)
 
     def __str__(self):
         return self.first_name + " " + self.last_name
