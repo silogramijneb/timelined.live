@@ -175,5 +175,9 @@ def maketimeline(response):
     context = {"timeline" : locals().get('timeline')}
    
     # Return the timeline to the front end
-    return render(response, 'templates/index.html', context) 
+    return render(response, 'templates/index.html', context)
+
+# TODO: redirect dashboard to specific app template dashboard
+def dashboard(response):
+    return render(response, 'servicepro/dashboard_main.html')
 
