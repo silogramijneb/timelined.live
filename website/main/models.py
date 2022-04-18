@@ -14,7 +14,7 @@ class Profile(User):
 
     def __str__(self):
         return self.first_name + " " + self.last_name
-        
+
 
 # ServiceProvider, Client, and thirdParty inherit attributes from User
 class ServiceProvider(Profile):
@@ -32,7 +32,6 @@ class Client(Profile):
     class Meta:
         db_table = 'Client'
 
-    models.CharField(max_length= 30)
     date_of_birth = models.DateField()
 
     def __str__(self):
@@ -45,7 +44,7 @@ class ThirdParty(Profile) :
     #category = models.Model()
 
     def __str__(self):
-        return  self.third_party_name
+        return  self.provider_names
 
 
 class Document(models.Model):
@@ -58,7 +57,7 @@ class Document(models.Model):
 
 class Timeline(models.Model):
     id = models.BigIntegerField(primary_key=True)
-    name = models.CharField(max_length = 50)
+    name = models.CharField(max_length = 50, default="New Timeline")
     # events = models.ForeignKey(Event, on_delete = models.CASCADE, null=True)
     # users = models.ForeignKey(User, on_delete = models.CASCADE)
     #user = models.ForeignKey(User, on_delete=models.PROTECT) # many timelines to one user
