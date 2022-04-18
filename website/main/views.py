@@ -20,11 +20,6 @@ def getTP(username):
 
 ### Define more functions for queries (Not sure if this is the right file for this)
 
-
-
-
-
-
 def index(response):
     return render(response, 'main/index.html')
 
