@@ -32,8 +32,7 @@ class ServiceProvider(Profile):
 class Client(Profile):
     class Meta:
         db_table = 'Client'
-
-    profile_ptr = models.CharField(max_length=30)
+        
     date_of_birth = models.DateField(default=timezone.now)
 
     def __str__(self):
