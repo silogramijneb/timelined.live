@@ -181,3 +181,5 @@ def maketimeline(response):
 def dashboard(response):
     return render(response, 'templates/dashboard.html')
 
+def timeline(response):
+    return render(response, 'templates/timeline.html')
