@@ -29,4 +29,4 @@ def index(response):
     return render(response, 'main/index.html')
 
 def dashboard(response):
-    return render(response, 'main/dashboard.html')
+    return render(response, 'main/dashboard-home.html')
