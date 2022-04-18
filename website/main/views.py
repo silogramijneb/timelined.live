@@ -22,6 +22,3 @@ def getTP(username):
 
 def index(response):
     return render(response, 'main/index.html')
-
-def dashboard(response):
-    return render(response, 'main/dashboard_home.html')
