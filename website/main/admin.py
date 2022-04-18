@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ServiceProvider, Client, thirdParty, User, Timeline, Event, Image, Document
+from .models import *
 
 
 # Register your models here.
