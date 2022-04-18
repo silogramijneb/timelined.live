@@ -3,12 +3,12 @@ from .models import *
 
 
 # Register your models here.
-admin.site.Register(ServiceProvider)
-admin.site.Register(Client)
-admin.site.Register(thirdParty)
-admin.site.Register(User)
-admin.site.Register(Timeline)
-admin.site.Register(Event)
-admin.site.Register(Image)
-admin.site.Register(Document)
+admin.site.register(ServiceProvider)
+admin.site.register(Client)
+admin.site.register(thirdParty)
+admin.site.register(User)
+admin.site.register(Timeline)
+admin.site.register(Event)
+admin.site.register(Image)
+admin.site.register(Document)
 
