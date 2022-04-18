@@ -34,7 +34,7 @@ class Client(Profile):
         db_table = 'Client'
 
     models.CharField(max_length= 30)
-    date_of_birth = models.DateField(default=timezone.now)
+    date_of_birth = models.DateField(default=timezone.now())
 
     def __str__(self):
         return self.first_name + " " + self.last_name
