@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.utils import timezone
 
 # Create your models here.
 
@@ -15,7 +14,7 @@ class Profile(User):
 
     def __str__(self):
         return self.first_name + " " + self.last_name
-        
+
 
 # ServiceProvider, Client, and thirdParty inherit attributes from User
 class ServiceProvider(Profile):
@@ -32,8 +31,8 @@ class ServiceProvider(Profile):
 class Client(Profile):
     class Meta:
         db_table = 'Client'
-        
-    date_of_birth = models.DateField(default=timezone.now)
+
+    date_of_birth = models.DateField()
 
     def __str__(self):
         return self.first_name + " " + self.last_name
@@ -45,12 +44,12 @@ class ThirdParty(Profile) :
     #category = models.Model()
 
     def __str__(self):
-        return  self.third_party_name
+        return  self.provider_names
 
 
 class Document(models.Model):
     id = models.BigIntegerField(primary_key=True)
-    file = models.FileField(upload_to='media/', null=True, blank = True)
+    file = models.FileField(upload_to='files/', null=True, blank = True)
 
     def __str__(self):
         return self.filename + ": " + str(self.filepath)
@@ -58,7 +57,7 @@ class Document(models.Model):
 
 class Timeline(models.Model):
     id = models.BigIntegerField(primary_key=True)
-    name = models.CharField(max_length = 50)
+    name = models.CharField(max_length = 50, default="New Timeline")
     # events = models.ForeignKey(Event, on_delete = models.CASCADE, null=True)
     # users = models.ForeignKey(User, on_delete = models.CASCADE)
     #user = models.ForeignKey(User, on_delete=models.PROTECT) # many timelines to one user
