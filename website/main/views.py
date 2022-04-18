@@ -164,9 +164,6 @@ def index(response):
     # Refresh Page, Redirect Page, or provide a JSON containing an error message
     return result
 
-def dashboard(response):
-    return render(response, 'main/dashboard_home.html')
-
 # A method that should be called strictly when the user begins the process of creating a timeline
 # If user finishes making a timeline, timeline() should be called instead.
 # When pressed, an empty timeline is created and the timeline id is passed back to the front end
