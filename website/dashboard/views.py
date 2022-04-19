@@ -5,3 +5,5 @@ from django.http import HttpResponse
 def dashboard(response):
     return render(response, "dashboard/home.html")
 
+def timeline(response):
+    return render(response, "dashboard/timeline.html")
