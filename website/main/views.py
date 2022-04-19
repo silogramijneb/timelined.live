@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from main.models import User, Client, ServiceProvider, ThirdParty, Timeline, Event
-from .forms import ThirdPartyRegistrationForm, ClientRegistrationForm, ProfessionalRegistrationForm, TimelineCreationForm, EventCreationForm
+from .forms import ThirdPartyRegistrationForm, ClientRegistrationForm, ProfessionalRegistrationForm, ThirdPartyRegistrationForm, TimelineCreationForm, EventCreationForm
 from .decorators import unauthenticated_user 
 from .enums import EventStatus
 import json, random
@@ -155,10 +155,10 @@ def index(response):
     # Functions in this category will either return a JSON containing an error message
     if response.method == 'POST':
         # On registration submission attempt to create user
-        if response.POST.get('action') == 'register':
+        if response.POST.get('submit') == 'register':
             registerUser(response)
         # On signin submission attempt to signin user
-        if response.POST.get('action') == 'login':
+        if response.POST.get('submit') == 'login':
             result = signinUser(response)
 
     # Refresh Page, Redirect Page, or provide a JSON containing an error message
