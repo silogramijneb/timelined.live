@@ -8,7 +8,7 @@
     </div>
     <!-- Content Row -->
     <div class="row">
-        <form action="" method="POST" id="timeline-event">
+        <form action="{{ registerUser }}" method="POST" id="timeline-event">
             {% csrf_token %}
             {{ event_creation_form.as_p }}
             <input type="submit" name="+">
