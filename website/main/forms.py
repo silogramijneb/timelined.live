@@ -30,6 +30,10 @@ class ClientRegistrationForm(UserCreationForm):
             FloatingField('email', css_class='mb-3'),
             FloatingField('password1', css_class='mb-3'),
             FloatingField('password2', css_class='mb-3')
+            Div(
+                Submit('submit', 'register', css_class='btn btn-primary rounded-pill btn-lg', label='Register'),
+                css_class='d-grid'
+            )
         )
 
         # Submission 
