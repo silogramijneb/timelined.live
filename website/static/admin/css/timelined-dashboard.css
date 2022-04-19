@@ -587,8 +587,10 @@
   }
   
   .row {
-    display: flex;
-    flex-wrap: wrap;
+    /*display: flex;
+    flex-wrap: wrap;*/
+    overflow-x: hidden;
+    overflow-y: auto;
     margin-right: -0.75rem;
     margin-left: -0.75rem;
   }
