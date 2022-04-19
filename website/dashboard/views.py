@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from main.forms import EventCreationForm
+from .forms import EventForm
 
 # Sends user data from timeline event to database
 def updateEvent(request, context):
@@ -11,6 +12,13 @@ def updateEvent(request, context):
         event = form.save(commit=False)
         event.save()
     context.update({"event_creation_form": form})
+
+def createEvent(request, context):
+    form = EventForm(request.POST)
+    if form.is_valid():
+        event = form.save(commit=False)
+        event.save()
+    context.update({"create_event_form": form})
 
 # Create your views here.
 def dashboard(response):
@@ -25,6 +33,11 @@ def timeline(request):
     if request.method == "POST":
         if request.POST.get("action") == 'update':
             updateEvent(request, context)
+
+    # POST: Save Form
+    if request.method == "POST":
+        if request.POST.get("action") == 'submit':
+            createEvent(request, context)
             
     result = render(request, "dashboard/timeline.html", context)            
     return result

@@ -1,6 +1,7 @@
 {% extends "dashboard/dashboard.html" %}
-
+{% load crispy_forms_tags %}
 {% block page_content %}
+
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -8,11 +9,21 @@
     </div>
     <!-- Content Row -->
     <div class="row">
-        <form action="{{ createEvent }}" method="POST" id="timeline-event">
-            {% csrf_token %}
-            {{ event_creation_form }}
-            <input type="submit" name="+">
-        </form>
+		<div class="card dashboard-card">
+        	<form action="{{ createEvent }}" method="POST" id="timeline-event" class="uniForm">
+            	{% csrf_token %}
+				<fieldset class="form-group text-center">
+						<legend class="border-bottom mb-3">Event</legend>
+				</fieldset>
+				<div class="form-group">
+					{{ create_event_form|crispy }}
+				</div>
+				<div class="form-group">
+					<button class="btn btn-rounded-pill" type="submit">+</button>
+				</div>
+        	</form>
+		</div>
     </div>
 </div>
+
 {% endblock %}
