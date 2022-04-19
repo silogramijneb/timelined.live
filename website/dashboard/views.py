@@ -5,7 +5,8 @@ from main.forms import EventCreationForm
 
 # Sends user data from timeline event to database
 def updateEvent(request, context):
-    form = EventCreationForm(request.POST)
+    initial_data = {"name": "EVENT TITLE"}
+    form = EventCreationForm(request.POST, initial_data=initial_data)
     if form.is_valid():
         event = form.save(commit=False)
         event.save()
