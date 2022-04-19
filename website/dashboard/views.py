@@ -41,3 +41,6 @@ def timeline(request):
             
     result = render(request, "dashboard/timeline.html", context)            
     return result
+
+def events():
+    return render("dashboard/events.html")
