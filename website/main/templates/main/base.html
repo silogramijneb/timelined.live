@@ -257,81 +257,8 @@
 						<button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-body border-0 p-4">
-						<form id="signUpForm" action="{% url 'dashboard' %}">
-							<!-- Account type -->
-							<div class="form-floating mb-3">
-								<h5 class="text-center fs-5 text-black mb-0">Choose your account type</h5>
-								<a href="#" class="nav-link text-center text-muted mb-3">Not sure? Click here to learn more <i class="fa-solid fa-arrow-right-long"></i></a>
-								<div class="form-check form-check-inline">
-									<input class="btn-check" type="radio" name="accountType" id="serviceProfessional" value="servicePro" checked>
-									<label class="btn btn-primary rounded-pill" for="serviceProfessional">Professional</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<input class="btn-check" type="radio" name="accountType" id="thirdParty" value="thirdParty">
-									<label class="btn btn-primary rounded-pill" for="thirdParty">Third Party</label>
-								</div>
-								<div class="form-check form-check-inline mb-2">
-									<input class="btn-check" type="radio" name="accountType" id="client" value="client">
-									<label class="btn btn-primary rounded-pill" for="client">Regular</label>
-								</div>
-							</div>
-							<!-- Name input -->
-							<div class="form-floating mb-3" id="signup-entries">
-								<input class="form-control" id="name" type="text" placeholder="Enter your name ..." data-sb-validations="required"/>
-								<label for="name">Full name</label>
-								<div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-							</div>
-							<!-- Company input -->
-							<div class="form-floating mb-3" id="company">
-								<input class="form-control" id="c" type="text" placeholder="Enter your company name ..." data-sb-validations="required"/>
-								<label for="company">Company</label>
-								<div class="invalid-feedback" data-sb-feedback="company:required">A company name is required.</div>
-							</div>
-							<div class="form-floating mb-3" id="birthday" style="display:none">
-								<input class="form-control" id="date-of-birth" type="date" placeholder="Enter your birthdate" data-sb-validations="required"/>
-								<label for="company">Birthdate</label>
-								<div class="invalid-feedback" data-sb-feedback="company:required">A birthdate is required.</div>
-							</div>
-							<!--
-							<div class="form-floating mb-3" style="display:none" id="birthday">
-								<input class="form-control" id="date-of-birth" type="date" placeholder="Enter your company name ..." data-sb-validations="required"/>
-								<label for="company">Date of birth</label>
-								<div class="invalid-feedback" data-sb-feedback="company:required">A company name is required.</div>
-							</div>-->
-                            <!-- Email address input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-                                <label for="email">Email address</label>
-                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                            </div>
-                            <!-- Phone number input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="password" type="password" placeholder="password" data-sb-validations="required,password" />
-                                <label for="phone">Password</label>
-                                <div class="invalid-feedback" data-sb-feedback="password:required">A password is required.</div>
-                            </div>
-							<a href="#loginModal" class="nav-link text-center mb-3">Already have an account? Login</a>
-							<!-- Submit success message-->
-                            <!---->
-                            <!-- This is what your users will see when the form-->
-                            <!-- has successfully submitted-->
-                            <div class="d-none" id="submitSuccessMessage">
-                                <div class="text-center mb-3">
-                                    <div class="fw-bolder">Form submission successful!</div>
-                                    To activate this form, sign up at
-                                    <br />
-                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                </div>
-                            </div>
-                            <!-- Submit error message-->
-                            <!---->
-                            <!-- This is what your users will see when there is-->
-                            <!-- an error submitting the form-->
-                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                            <!-- Submit Button-->
-                            <div class="d-grid"><button class="btn btn-primary rounded-pill btn-lg" id="submitButton" type="submit">Submit</button></div>
-						</form>
+						{% csrf_token %}
+						{{ registration_form.as_p }}
 					</div>
 				</div>
 			</div>
