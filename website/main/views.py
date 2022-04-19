@@ -176,10 +176,3 @@ def maketimeline(response):
    
     # Return the timeline to the front end
     return render(response, 'templates/index.html', context)
-
-# TODO: render different aspects of dashboard based on user privileges
-def dashboard(response):
-    return render(response, 'templates/timeline.html')
-
-def timeline(response):
-    return render(response, 'templates/timeline.html')
