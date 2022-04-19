@@ -3,5 +3,5 @@ from django.http import HttpResponse
 
 # Create your views here.
 def dashboard(response):
-    return render(response, "dashboard/timeline.html")
+    return render(response, "dashboard/home.html")
 
