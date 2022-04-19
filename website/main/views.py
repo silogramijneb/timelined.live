@@ -50,7 +50,7 @@ def registerUser(response):
         # Set user's permissions
             # Group logic
         login(response, user)
-        return redirect('dashboard')
+        return redirect('dashboard/')
     else:
         return HttpResponse(json.dumps({'message': 'Invalid registration data'})) 
         
