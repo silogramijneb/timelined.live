@@ -8,11 +8,40 @@
     </div>
     <!-- Content Row -->
     <div class="row">
-        <div class="card dashboard-card">
-            <div class="card-header">
-                <p>test</p>
+        <form action="" method="POST" id="timeline-event">
+            <div class="card dashboard-card">
+                <div class="card-header">
+                    <input id="name" type="text" name="event_title" value="{{ name }}">
+                </div>
+                <div class="card-content">
+                    <h5 class="text-center fs-5 text-black mb-0">Event Type</h5>
+                    <div class="form-check form-check-inline">
+                        <input class="btn-check" type="radio" name="accountType" id="serviceProfessional" value="servicePro" checked>
+                        <label class="btn btn-primary rounded-pill" for="serviceProfessional">Meeting</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="btn-check" type="radio" name="accountType" id="thirdParty" value="thirdParty">
+                        <label class="btn btn-primary rounded-pill" for="thirdParty">Repair/Maintenance</label>
+                    </div>
+                    <div class="form-check form-check-inline mb-2">
+                        <input class="btn-check" type="radio" name="accountType" id="client" value="client">
+                        <label class="btn btn-primary rounded-pill" for="client">Document Upload</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="btn-check" type="radio" name="accountType" id="serviceProfessional" value="servicePro" checked>
+                        <label class="btn btn-primary rounded-pill" for="serviceProfessional">Schedule Appointment</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="btn-check" type="radio" name="accountType" id="thirdParty" value="thirdParty">
+                        <label class="btn btn-primary rounded-pill" for="thirdParty">Check Up</label>
+                    </div>
+                    <div class="form-check form-check-inline mb-2">
+                        <input class="btn-check" type="radio" name="accountType" id="client" value="client">
+                        <label class="btn btn-primary rounded-pill" for="client">Verification</label>
+                    </div>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 {% endblock %}
