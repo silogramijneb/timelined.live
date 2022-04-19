@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from .models import ThirdParty, ServiceProvider, Client, Timeline, Event
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Column, Row
+from crispy_forms.layout import Layout, Column, Row, Submit  
 from crispy_bootstrap5.bootstrap5 import FloatingField
 
 class ClientRegistrationForm(UserCreationForm):
@@ -29,14 +29,24 @@ class ClientRegistrationForm(UserCreationForm):
             FloatingField('date_of_birth', css_class='mb-3'),
             FloatingField('email', css_class='mb-3'),
             FloatingField('password1', css_class='mb-3'),
-            FloatingField('password2', css_class='mb-3')
+            FloatingField('password2', css_class='mb-3'),
+            Div(
+                Submit('submit', 'register', css_class='btn btn-primary rounded-pill btn-lg', label='Register'),
+                css_class='d-grid'
+            )
         )
+
+        # Submission 
+        # self.helper.add_input(Submit('submit', 'Submit'))
+
             
         # Django form attributes / Field properties
         self.fields['password1'].help_text = None
         self.fields['password2'].help_text = None
         self.fields['password2'].label = 'Password Confirmation'
         self.fields['date_of_birth'].widget = DateInput()
+
+
 
 class ProfessionalRegistrationForm(UserCreationForm):
     class Meta:
