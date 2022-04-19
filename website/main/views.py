@@ -175,4 +175,4 @@ def maketimeline(response):
     context = {"timeline" : locals().get('timeline')}
    
     # Return the timeline to the front end
-    return render(response, 'index.html', context)
+    return render(response, 'main/index.html', context)
