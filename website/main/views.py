@@ -134,7 +134,7 @@ def index(response):
     # Defult context for our page
     context = { "registration_form":  ProfessionalRegistrationForm() }
     # Render defult page with updated context
-    result = render(response, 'index.html', context) 
+    result = render(response, 'main/index.html', context) 
 
     # POST: Update Context
     if response.method == 'POST':
