@@ -259,6 +259,7 @@
 					<div class="modal-body border-0 p-4">
 						<form action="{{ registerUser }}" method="POST">
 							{% csrf_token %}
+							{% load crispy_forms_tags %}
 							{% crispy registration_form %}
 							<input type="submit" name="Create User">
 						</form>
