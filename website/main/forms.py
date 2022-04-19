@@ -69,7 +69,7 @@ class ProfessionalRegistrationForm(UserCreationForm):
         self.fields['password2'].help_text = None
         self.fields['password2'].label = 'Password Confirmation'
 
-class ThirdPartyForm(UserCreationForm):
+class ThirdPartyRegistrationForm(UserCreationForm):
     class Meta:
         model = ThirdParty
         fields = ['first_name', 'last_name', 'third_party_name', 'website', 'username', 'password1', 'password2']
