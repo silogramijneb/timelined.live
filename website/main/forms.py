@@ -62,6 +62,9 @@ class ProfessionalRegistrationForm(UserCreationForm):
         # Crispy Package Setup
         self.helper = FormHelper()
 
+        # Set HTTP Request
+        self.form_method = 'POST'
+
         # Bootstrap 
         self.helper.layout = Layout(
             FloatingField('first_name', css_class='mb-3'),
@@ -98,6 +101,9 @@ class ThirdPartyRegistrationForm(UserCreationForm):
         super().__init__(*args, **kwargs)
         # Crispy Package Setup
         self.helper = FormHelper()
+
+        # Set HTTP Request
+        self.form_method = 'POST'
 
         # Bootstrap 
         self.helper.layout = Layout(
