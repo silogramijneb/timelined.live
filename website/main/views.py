@@ -148,7 +148,7 @@ def index(response):
             return # Assuming AJAX or some means of updating our form without refresh exists
         # On Client registration, update form fields
         if response.POST.get('accountType') == 'client':
-            context.update({"registration_form":  Client()})
+            context.update({"registration_form":  ClientRegistrationForm()})
             return # Assuming AJAX or some means of updating our form without refresh exists
 
     # POST: Update Render

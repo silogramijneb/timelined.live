@@ -38,10 +38,8 @@ class ClientRegistrationForm(UserCreationForm):
                 Submit('submit', 'register', css_class='btn btn-primary rounded-pill btn-lg', label='Register'),
                 css_class='d-grid'
             )
-        )
-
-         # Submission 
-            
+        ) 
+        
         # Django form attributes / Field properties
         self.fields['username'].help_text = None
         self.fields['password1'].help_text = None
@@ -72,7 +70,11 @@ class ProfessionalRegistrationForm(UserCreationForm):
             FloatingField('website', css_class='mb-3'),
             FloatingField('email', css_class='mb-3'),
             FloatingField('password1', css_class='mb-3'),
-            FloatingField('password2', css_class='mb-3')
+            FloatingField('password2', css_class='mb-3'),
+            Div(
+                Submit('submit', 'register', css_class='btn btn-primary rounded-pill btn-lg', label='Register'),
+                css_class='d-grid'
+            )
         )
             
         # Django form attributes / Field properties
@@ -80,6 +82,7 @@ class ProfessionalRegistrationForm(UserCreationForm):
         self.fields['password1'].help_text = None
         self.fields['password2'].help_text = None
         self.fields['password2'].label = 'Password Confirmation'
+        self.fields['provider_name'].label = 'Provider Name'
 
 class ThirdPartyRegistrationForm(UserCreationForm):
     class Meta:
@@ -104,7 +107,11 @@ class ThirdPartyRegistrationForm(UserCreationForm):
             FloatingField('website', css_class='mb-3'),
             FloatingField('email', css_class='mb-3'),
             FloatingField('password1', css_class='mb-3'),
-            FloatingField('password2', css_class='mb-3')
+            FloatingField('password2', css_class='mb-3'),
+            Div(
+                Submit('submit', 'register', css_class='btn btn-primary rounded-pill btn-lg', label='Register'),
+                css_class='d-grid'
+            )
         )
 
         # Submission 
