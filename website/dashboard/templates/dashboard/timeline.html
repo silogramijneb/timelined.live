@@ -35,47 +35,43 @@
 				</h2>
 				<div id="collapse0" class="accordion-collapse collapse show" aria-labelledby="heading0" data-bs-parent="#newTimeline">
 					<div class="accordion-body">
-						<div class="card dashboard-card mt-3">
-							<form id="timeline-event">
-								<div class="form-floating mt-3 mb-3">
-									<input type="text" class="form-control" id="eventName">
-									<label for="eventName">Event Name</label>
-								</div>
-								<div class="form-floating mb-3">
-									<textarea type="text" class="form-control" id="eventDescription" style="height: 100px"></textarea>
-									<label for="eventDescription">Description</label>
-								</div>
-								<div class="form-group mb-3">
-									<select class="form-select" id="eventType">
-										<option selected>Event Type</option>
-										<option value="meeting">Meeting</option>
-										<option value="schedule_appointment">Schedule Appointment</option>
-										<option value="repair">Repair</option>
-										<option value="maintenance">Maintenance</option>
-										<option value="verification">Verification</option>
-										<option value="inspection">Inspection</option>
-										<option value="check_up">Check Up</option>
-										<option value="contact">Contact</option>
-										<option value="custom">Custom</option>
-									</select>
-								</div>
-								<div class="form-floating mb-3">
-								</div>
-								<div class="form-group mb-3">
-									<select class="form-select" id="eventStatus">
-										<option selected>Event Status</option>
-										<option value="Unscheduled">Unscheduled</option>
-										<option value="Scheduled">Scheduled</option>
-										<option value="Completed">Completed</option>
-										<option value="Upcoming">Upcoming</option>
-										<option value="Past Due">Past Due</option>
-									</select>
-								</div>
-								<div class="form-floating mb-3 text-center">
-									<button id="#createEvent" class="btn btn-success rounded-pill px-3 mt-3 mb-lg-0" type="submit" onsubmit="createNewEvent()">Create Event</button>
-								</div>
-							</form>
-						</div>
+						<form id="timeline-event">
+							<div class="form-group mt-3 mb-3">
+								<select class="form-select" id="eventType">
+									<option selected>Event Type</option>
+									<option value="meeting">Meeting</option>
+									<option value="schedule_appointment">Schedule Appointment</option>
+									<option value="repair">Repair</option>
+									<option value="maintenance">Maintenance</option>
+									<option value="verification">Verification</option>
+									<option value="inspection">Inspection</option>
+									<option value="check_up">Check Up</option>
+									<option value="contact">Contact</option>
+									<option value="custom">Custom</option>
+								</select>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="eventName">
+								<label for="eventName">Event Name</label>
+							</div>
+							<div class="form-floating mb-3">
+								<textarea type="text" class="form-control" id="eventDescription" style="height: 100px"></textarea>
+								<label for="eventDescription">Description</label>
+							</div>
+							<div class="form-group mb-3">
+								<select class="form-select" id="eventStatus">
+									<option selected>Event Status</option>
+									<option value="Unscheduled">Unscheduled</option>
+									<option value="Scheduled">Scheduled</option>
+									<option value="Completed">Completed</option>
+									<option value="Upcoming">Upcoming</option>
+									<option value="Past Due">Past Due</option>
+								</select>
+							</div>
+							<div class="form-floating mb-3 text-center">
+								<button id="#createEvent" class="btn btn-success rounded-pill px-3 mt-3 mb-lg-0" type="button" onsubmit="createNewEvent()">Create Event</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
