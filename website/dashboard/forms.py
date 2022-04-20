@@ -22,17 +22,4 @@ class EventForm(ModelForm):
             'timeline': 'Timeline',
             'file_upload': 'Upload Documents',
         }
-    
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.layout = Layout(
-                FloatingField("event_title", css_class="mb-3"),
-                FloatingField("event_type", css_class="mb-3"),
-                FloatingField("event_description", css_class="mb-3"),
-                FloatingField("status", css_class="mb-3"),
-                FloatingField("dependent_on", css_class="mb-3"),
-                ButtonHolder(
-                    Submit('submit', 'Submit', css_class="button white")
-                ),
-        )
+        exclude = ['date_created', 'date_last_modified', 'date_completed', 'timeline']

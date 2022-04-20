@@ -23,6 +23,7 @@ def createEvent(request, context):
 def dashboard(response):
     return render(response, "dashboard/home.html")
 
+'''
 def timeline(request):
     
     context = {}
@@ -40,6 +41,16 @@ def timeline(request):
             
     result = render(request, "dashboard/timeline.html", context)            
     return result
+'''
+
+def timeline(request):
+    context = {}
+    form = EventForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+    
+    context['form'] = form
+    return render(request, "dashboard/timeline.html", context)
 
 def events():
     return render("dashboard/events.html")
