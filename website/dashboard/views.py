@@ -23,7 +23,7 @@ def createEvent(request, context):
 # Create your views here.
 def dashboard(response):
     context = {'timeline_list' : [1, 2, 3, 4, 5, 6, 7, 8] }
-    return render(response, context, "dashboard/home.html")
+    return render(response, "dashboard/home.html", context)
 
 '''
 def timeline(request):
