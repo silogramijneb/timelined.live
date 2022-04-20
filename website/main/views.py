@@ -45,9 +45,8 @@ def getTP(username):
 # Validate registration data and add user to DB if valid 
 def registerUser(response): 
     form = ClientRegistrationForm(response.POST)
-    form = form.select_for_update()
     if form.is_valid():
-        user = form.save()
+        user = form.save(commit=False) # Create the user object, but don't send it
         #user.id = generateID(User)
         user.email = user.username
         return login(response, user)
