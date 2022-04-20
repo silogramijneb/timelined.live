@@ -24,7 +24,7 @@ class TimelineEvent(models.Model):
     )
     event_type = forms.ChoiceField(choices=event_types)
     description = models.TextField()
-    statuses = (
+    status_codes = (
         (0, 'unscheduled'), 
         (1, 'scheduled'),
         (2, 'completed'),
@@ -32,7 +32,7 @@ class TimelineEvent(models.Model):
         (4, 'upcoming'),
         (5, 'overdue'),
     )
-    status = forms.ChoiceField(choices=statuses)
+    status = forms.ChoiceField(choices=status_codes)
     location = models.CharField(max_length=64)
     date_created = models.DateField(auto_now_add=True)
     date_last_modified = models.DateField(auto_now=True)
