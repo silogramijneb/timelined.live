@@ -24,7 +24,7 @@ def createEvent(request, context):
 def dashboard(response):
     context = {'timeline_list' : [1, 2, 3, 4, 5, 6, 7, 8],
                 'teststring' : "CONTEXT WAS PASSED"}
-    return render(response, "dashboard/home.html", context)
+    return render(response, "dashboard/timeline.html", context)
 
 '''
 def timeline(request):` `
