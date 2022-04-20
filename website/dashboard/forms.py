@@ -10,7 +10,7 @@ class EventForm(ModelForm):
     class Meta:
         model = TimelineEvent
         fields = [
-            'title', 'event_type', 'description', 'status', 'location',
+            'title', 'description', 'location',
             'timeline', 'file_upload'
         ]
         labels = {
