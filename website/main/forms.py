@@ -7,6 +7,33 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Column, Row, Submit, Div
 from crispy_bootstrap5.bootstrap5 import FloatingField
 
+class UserSelectionForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        
+        # Crispy Package Setup
+        self.helper = FormHelper()
+
+        # Set HTTP Request
+        self.form_method = 'POST'
+
+        self.helper.layout = Layout(
+            
+            Div(
+                Submit('client', 'Client', css_class='btn btn-primary rounded-pill btn-sm'),
+                css_class='d-grid'
+            ),
+            Div(
+                Submit('service_pro', 'Service Professional', css_class='btn btn-primary rounded-pill btn-sm'),
+                css_class='d-grid'
+            ),
+            Div(
+                Submit('third_party', 'Third Party', css_class='btn btn-primary rounded-pill btn-sm'),
+                css_class='d-grid'
+            )
+            
+        )
+
 class ClientRegistrationForm(UserCreationForm):
     class Meta:
         model = Client
