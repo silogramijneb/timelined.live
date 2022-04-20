@@ -260,8 +260,9 @@
 						<form action="{{ registerUser }}" method="POST">
 							{% load crispy_forms_tags %}
 							{% csrf_token %}
-							{% crispy user_select_form %}
-							{% crispy registration_form %}
+							{% crispy client_registration_form %}
+							{% crispy pro_registration_form %}
+							{% crispy tp_registration_form %}
 						</form>
 					</div>
 				</div>
