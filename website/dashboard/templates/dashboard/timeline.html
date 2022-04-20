@@ -51,7 +51,7 @@
 								</select>
 							</div>
 							<div class="form-floating mb-3">
-								<input type="text" class="form-control" id="eventName">
+								<input type="text" class="form-control" id="eventName" onsubmit="changeCardTitle()">
 								<label for="eventName">Event Name</label>
 							</div>
 							<div class="form-floating mb-3">
@@ -80,9 +80,16 @@
 </div>
 
 <script>
-		function createNewEvent() {
-			let submitButton = document.getElementById('#createEvent');
-			submitButton.style.display="None";
-		}
+
+	let timeline = [];
+	function createNewEvent() {
+		let submitButton = document.getElementById('#createEvent');
+		submitButton.style.display="None";
+	}
+
+	function changeCardTitle() {
+		let cardTitle = document.getElementById('#collapse0');
+		cardTitle.innerHTML(cardTitle.value);
+	}
 </script>
 {% endblock %}
