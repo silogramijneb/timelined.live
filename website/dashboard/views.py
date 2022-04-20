@@ -49,7 +49,7 @@ def timeline(request):
 def timeline(request):
     context = {}
     if request.method == "POST":
-        form = EventCreationForm(request.POST or None, request.FILES or None)
+        form = EventCreationForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             event_title = form.cleaned_data.get('title')

@@ -1,5 +1,5 @@
 from django.db import models
-from djongo import models as dongo_models
+from djongo import models as djongo_models
 from django.contrib.auth.models import User
 
 # Create your models here.
@@ -68,7 +68,7 @@ class Timeline(models.Model):
 
 class Event(models.Model):
 
-    _id = dongo_models.ObjectIdField()
+    _id = djongo_models.ObjectIdField()
 
     #index = models.IntegerField()
 

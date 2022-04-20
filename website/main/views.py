@@ -50,7 +50,8 @@ def registerUser(response):
         #user.id = generateID(User)
         user.email = user.username
         user.save() 
-        return login(response, user)
+        login(response, user)
+        return redirect('dashboard')
     else:
         return HttpResponse(json.dumps({'message': 'Invalid registration data'})) 
 
