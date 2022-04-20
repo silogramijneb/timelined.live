@@ -35,7 +35,7 @@
 				</h2>
 				<div id="collapse0" class="accordion-collapse collapse show" aria-labelledby="heading0" data-bs-parent="#newTimeline">
 					<div class="accordion-body">
-						<form action="" id="timeline-event">
+						<form onsubmit="event.preventDefault(); validateForm();" id="timeline-event">
 							<div class="form-group mt-3 mb-3">
 								<select class="form-select" id="eventType">
 									<option selected>Event Type</option>
@@ -90,6 +90,16 @@
 	function changeCardTitle() {
 		let cardTitle = document.getElementById('#collapse0');
 		cardTitle.innerHTML(cardTitle.value);
+	}
+
+	function validateForm() {
+		let valid = false;
+		if (valid == false) {
+			alert("Form validation failed");
+			return false;
+		} else {
+			return true;
+		}
 	}
 </script>
 {% endblock %}
