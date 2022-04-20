@@ -82,7 +82,7 @@
 		let prevEvent = document.getElementById("newTimeline" + divNumber);
 		let newEvent = prevEvent.cloneNode(prevEvent);
 		newEvent.id = "newTimeline" + (divNumber+1);
-		newEvent.querySelector('collapse'+divNumber).setAttribute(id, 'collapse'+divNumber);
+		newEvent.querySelector('input').innerHTML = "";
 		prevEvent.appendChild(newEvent);
 
 		document.getElementById('eventsRow').appendChild(newEvent);
