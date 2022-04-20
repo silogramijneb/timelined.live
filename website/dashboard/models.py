@@ -24,4 +24,4 @@ class TimelineEvent(models.Model):
     event_type = models.IntegerField(choices=Type.choices)
     description = models.CharField(max_length=240)
     status = models.IntegerField(choices=Status.choices)
-    dependencies = models.CharField(max_length=32)
+    dependent_on  = models.CharField(max_length=32)

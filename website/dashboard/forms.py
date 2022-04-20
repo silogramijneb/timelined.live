@@ -5,7 +5,7 @@ from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit
 from crispy_bootstrap5.bootstrap5 import *
 from .models import TimelineEvent
 
-class EventForm(forms.Form, ModelForm):
+class EventForm(forms.Form):
     
     class Meta:
         model = TimelineEvent

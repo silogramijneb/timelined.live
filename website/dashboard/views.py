@@ -6,12 +6,11 @@ from .forms import EventForm
 
 # Sends user data from timeline event to database
 def updateEvent(request, context):
-    initial_data = {"name": "EVENT TITLE"}
-    form = EventCreationForm(request.POST, initial_data=initial_data)
+    form = EventForm(request.POST)
     if form.is_valid():
         event = form.save(commit=False)
         event.save()
-    context.update({"event_creation_form": form})
+    context.update({"create_event_form": form})
 
 def createEvent(request, context):
     form = EventForm(request.POST)
@@ -27,7 +26,7 @@ def dashboard(response):
 def timeline(request):
     
     context = {}
-    context.update({"event_creation_form": EventCreationForm()})
+    context.update({"create_event_form": EventForm()})
     
     # POST: Update context
     if request.method == "POST":
