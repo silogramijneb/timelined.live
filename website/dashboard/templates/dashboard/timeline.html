@@ -92,11 +92,11 @@
 		document.getElementById('cardTitle' + divNumber).className = 'accordion-button collapsed';
 		document.getElementById('cardTitle' + divNumber).setAttribute('aria-expanded', false);
 		let newEvent = document.getElementById("newTimeline" + divNumber).cloneNode(true);
-		newEvent.getElementById("cardTitle" + divNumber).id = "cardTitle" + (divNumber + 1);
-		newEvent.getElementById("collapse" + divNumber).id = "collapse" + (divNumber+1);
+		newEvent.querySelector("cardTitle" + divNumber).id = "cardTitle" + (divNumber + 1);
+		newEvent.querySelector("collapse" + divNumber).id = "collapse" + (divNumber+1);
 		divNumber = divNumber + 1;
 		newEvent.id = "newTimeline" + divNumber;
-		newEvent.getElementById("cardTitle" + divNumber).innerHTML = "New Event"; 
+		newEvent.querySelector("cardTitle" + divNumber).innerHTML = "New Event"; 
 		document.getElementById('eventsRow').appendChild(newEvent);
 	}
 
