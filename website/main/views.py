@@ -9,6 +9,7 @@ from .forms import ThirdPartyRegistrationForm, ClientRegistrationForm, Professio
 from .decorators import unauthenticated_user 
 from .enums import EventStatus
 import json, random
+from crispy_forms.helper import FormHelper
 
 
 # These functions route the HTML in the templates folder to the correct view
