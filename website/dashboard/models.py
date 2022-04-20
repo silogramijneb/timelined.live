@@ -46,7 +46,7 @@ class TimelineEvent(models.Model):
             "event_type": self.event_type,
             "description": self.description,
             "status": self.status,
-            "location": self.location,
+            #"location": self.location,
             "history": {
                 "date_created": self.date_created,
                 "date_last_modified": self.date_last_modified,
