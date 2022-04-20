@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.http import HttpResponse
 from main.models import User, Client, ServiceProvider, ThirdParty, Timeline, Event
-from .forms import ThirdPartyRegistrationForm, ClientRegistrationForm, ProfessionalRegistrationForm, ThirdPartyRegistrationForm, TimelineCreationForm, EventCreationForm
+from .forms import ThirdPartyRegistrationForm, ClientRegistrationForm, ProfessionalRegistrationForm, ThirdPartyRegistrationForm, TimelineCreationForm, EventCreationForm, UserSelectionForm
 from .decorators import unauthenticated_user 
 from .enums import EventStatus
 import json, random
