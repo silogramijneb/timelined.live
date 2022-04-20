@@ -87,7 +87,8 @@
 		submitButton.style.display="None";
 		let prevDivIndex = "collapse"+divNumber;
 		let prevDiv = document.getElementById(prevDivIndex);
-		document.getElementById('cardTitle').collapse("toggle");
+		prevDiv.classList('accordion-collapse collapse');
+		document.getElementById('cardTitle').classList('accordion-button collapsed');
 	}
 
 	function changeCardTitle() {
