@@ -19,10 +19,12 @@
             </div>
             <div class="card-body">
             
-            {% for timeline in timeline_list %}
-                {% include "dashboard/dash-timeline.html" with timeline_name="Test Timeline" percentage_complete="100%" valuenow=100 width="width: 100%" %}
+            {% for i in timeline_list %}
+                <div class="row">
+                    {% include "dashboard/dash-timeline.html" with timeline_name="Test Timeline" percentage_complete="100%" valuenow=100 width="width: 100%" %}
+                </div>
             {% endfor %}
-            
+
             </div>
                 
         </div>
