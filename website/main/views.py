@@ -52,7 +52,9 @@ def registerUser(response):
         login(response, user)
     else:
         return HttpResponse(json.dumps({'message': 'Invalid registration data'})) 
-        
+
+
+
 # Valididate attempted user signin. Will redirect if valid
 def signinUser(response):
         username = response.POST.get('username')
@@ -133,10 +135,16 @@ def createEvent(request, context):
 def index(response):
     # Defult context for our page
     context = {}
-    context.update({"user_select_form": UserSelectionForm(), "registration_form":  ClientRegistrationForm()})
+    context.update({"user_select_form": UserSelectionForm()})
+    #Load Registration Forms 
+    context.update({"client_registration_form": ClientRegistrationForm()})
+    context.update({"pro_registration_form": ProfessionalRegistrationForm()})
+    context.update({"tp_registration_form": ThirdPartyRegistrationForm()})
+
     # Render defult page with updated context
     result = render(response, 'main/index.html', context) 
 
+    """
     # POST: Update Context
     if response.method == 'POST':
         # On Service Pro registration, update form fields
@@ -151,6 +159,8 @@ def index(response):
         if response.POST.get('accountType') == 'client':
             context.update({"registration_form":  ClientRegistrationForm()})
             return # Assuming AJAX or some means of updating our form without refresh exists
+    """
+
 
     # POST: Update Render
     # Functions in this category will either return a JSON containing an error message
@@ -164,6 +174,8 @@ def index(response):
 
     # Refresh Page, Redirect Page, or provide a JSON containing an error message
     return result
+
+
 
 # A method that should be called strictly when the user begins the process of creating a timeline
 # If user finishes making a timeline, timeline() should be called instead.
