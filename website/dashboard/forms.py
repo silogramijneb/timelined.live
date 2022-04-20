@@ -11,7 +11,6 @@ class EventForm(ModelForm):
         model = TimelineEvent
         fields = [
             'title', 'description', 'location',
-            'timeline', 'file_upload'
         ]
         labels = {
             'title': 'Event Title',
