@@ -8,10 +8,11 @@
         <h1 class="h3 mb-0 text-gray-800">Create a new timeline</h1>
     </div>
     <!-- Content Row -->
+	<!--
     <div class="row">
 		<div class="card dashboard-card">
 			{% load crispy_forms_tags %}
-        	<form action="{{ createEvent }}" method="POST" id="timeline-event" class="uniForm">
+        	<form method="POST" id="timeline-event" class="uniForm">
             	{% csrf_token %}
 				<fieldset class="form-group text-center">
 						<legend class="border-bottom mb-3">Event</legend>
@@ -19,12 +20,58 @@
 				<div class="form-group">
 					{{ form|crispy }}
 				</div>
-				<div class="form-group">
-					<button class="btn btn-rounded-pill" type="submit">+</button>
+				<div class="form-group text-center">
+						<button id="#createEvent" class="btn btn-success rounded-pill px-3 mt-3 mb-lg-0" type="submit" onsubmit="createNewEvent()">Create Event</button>
 				</div>
         	</form>
 		</div>
     </div>
+	-->
+	<div class="row">
+		<div class="accordion" id="newTimeline">
+			<div class="accordion-item">
+				<h2 class="accordion-header" id="eventNameAccordion">
+					<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse0" aria-expanded="true" aria-controls="collapse0">New Event</button>
+				</h2>
+				<div id="collapse0" class="accordion-collapse collapse show" aria-labelledby="heading0" data-bs-parent="#newTimeline">
+					<div class="accordion-body">
+<div class="card dashboard-card">
+					<form id="timeline-event">
+						<div class="form-floating mb-3">
+							<input type="text" class="form-control" id="eventName">
+						<label for="eventName">Event Name</label>
+						</div>
+						<div class="form-floating mb-3">
+							<textarea type="text" class="form-control" id="eventDescription" style="height: 100px"></textarea>
+						<label for="eventDescription">Description</label>
+						</div>
+						<div class="form-group mb-3">
+							<select class="form-select" id="eventStatus">
+								<option selected>Event Status</option>
+								<option value="Unscheduled">Unscheduled</option>
+								<option value="Scheduled">Scheduled</option>
+								<option value="Completed">Completed</option>
+								<option value="Upcoming">Upcoming</option>
+								<option value="Past Due">Past Due</option>
+							</select>
+						</div>
+						<div class="form-floating mb-3 text-center">
+							<button id="#createEvent" class="btn btn-success rounded-pill px-3 mt-3 mb-lg-0" type="submit" onsubmit="createNewEvent()">Create Event</button>
+						</div>
+					</div>
+				</div>
+
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
 
+<script>
+		function createNewEvent() {
+			let submitButton = document.getElementById('#createEvent');
+			submitButton.style.display="None";
+		}
+</script>
 {% endblock %}

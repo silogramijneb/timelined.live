@@ -21,9 +21,9 @@
 
 			div.dashboard-card {
 				display: block;
+				width: 55rem;
 				margin-left: auto;
 				margin-right: auto;
-				width: 40rem;
 			}
 			
 			#timeline-event {
@@ -31,11 +31,9 @@
 				width: 100%;
 				margin-left: auto;
 				margin-right: auto;
-				padding-left: 5rem;
-				padding-right: 5rem;
+				padding-left: 10rem;
+				padding-right: 10rem;
 			}
-			
-			.asteriskField { display: none; }
 		</style>
 	</head>
 
@@ -68,10 +66,10 @@
 						<span>Dashboard</span></a>
 				</li>
 
-				<li class="nav-item" style="margin-top: -25px">
+				<li class="nav-item">
 					<a class="nav-link" href="/dashboard/timeline">
 						<i class="fa-solid fa-plus"></i>
-						<span class="ms-1">New Timeline</span>
+						<span>New Timeline</span>
 					</a>
 				</li>
 
@@ -344,7 +342,7 @@
 								</div>
 							</li>
 							<a class="sidebar-brand d-flex align-items-center justify-content-center" data-bs-toggle="modal" data-bs-target="#logoutModal" style="padding-top: 0px;">
-								<div class="sidebar-brand-text fw-bold mx-3" style="font-family: var(--font-timelined-primary); font-size: 15px;">Logout</div>
+								<div class="sidebar-brand-text fw-bold mx-3" style="font-family: var(--font-timelined-primary); text-transform: lowercase; font-size: 15px;">Logout</div>
 							</a>
 	
 							<div class="topbar-divider d-none d-sm-block"></div>
