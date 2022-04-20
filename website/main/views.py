@@ -137,14 +137,13 @@ def index(response):
     # Defult context for our page
     
     #Load Registration Forms 
-    context_client = {}
-    context_pro = {}
-    context_tp = {}
+    context = {}
+    
 
 
-    context_client.update({'registration_form': ClientRegistrationForm()})
-    context_pro.update({"pro_registration_form": ProfessionalRegistrationForm()})
-    context_tp.update({"tp_registration_form": ThirdPartyRegistrationForm()})
+    context.update({'registration_form': ClientRegistrationForm()})
+    context.update({"pro_registration_form": ProfessionalRegistrationForm()})
+    context.update({"tp_registration_form": ThirdPartyRegistrationForm()})
 
     # Render defult page with updated context
     result = render(response, 'main/index.html', context) 
