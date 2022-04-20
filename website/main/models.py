@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.utils import timezone
 
 # Create your models here.
 
@@ -11,11 +10,10 @@ class Profile(User):
     class Meta:
         db_table = 'TimelineUser'
 
-    phone = models.CharField(max_length=10)
+    phone = models.CharField(max_length=10, null=True)
 
     def __str__(self):
         return self.first_name + " " + self.last_name
-
 
 # ServiceProvider, Client, and thirdParty inherit attributes from User
 class ServiceProvider(Profile):
@@ -27,17 +25,15 @@ class ServiceProvider(Profile):
 
     def __str__(self):
         return "(" + self.provider_name + ") " + self.first_name + " " + self.last_name
-
-
+    
 class Client(Profile):
     class Meta:
         db_table = 'Client'
 
-    date_of_birth = models.DateField(default=timezone.now)
+    date_of_birth = models.DateField(blank=True, null=True)
 
     def __str__(self):
         return self.first_name + " " + self.last_name
-
 
 class ThirdParty(Profile) :
     third_party_name = models.CharField(max_length= 30)
@@ -45,8 +41,7 @@ class ThirdParty(Profile) :
     #category = models.Model()
 
     def __str__(self):
-        return  self.provider_names
-
+        return  self.third_party_name
 
 class Document(models.Model):
     id = models.BigIntegerField(primary_key=True)
@@ -55,10 +50,9 @@ class Document(models.Model):
     def __str__(self):
         return self.filename + ": " + str(self.filepath)
 
-
 class Timeline(models.Model):
     id = models.BigIntegerField(primary_key=True)
-    name = models.CharField(max_length = 50, default="New Timeline")
+    name = models.CharField(max_length = 50)
     # events = models.ForeignKey(Event, on_delete = models.CASCADE, null=True)
     # users = models.ForeignKey(User, on_delete = models.CASCADE)
     #user = models.ForeignKey(User, on_delete=models.PROTECT) # many timelines to one user
@@ -66,7 +60,9 @@ class Timeline(models.Model):
 
     def __str__(self):
         return self.name
-
+    
+    def getId(self):
+        return self.id
 
 class Event(models.Model):
 
@@ -87,8 +83,8 @@ class Event(models.Model):
     location = models.CharField(max_length = 100)
 
     #dates that are critical for time sensitivity of event
-    date_created = models.DateField(auto_now_add=True)
-    deadline = models.DateField()
+    start_date = models.DateField()
+    end_date = models.DateField()
     date_modified = models.DateField(auto_now=True)
     date_ended = models.DateField(null=True)
 
@@ -107,10 +103,13 @@ class Event(models.Model):
 
 class UserTimeline(models.Model):
     class Meta:
-        db_table = 'TimelineUserJunction'
+        db_table = 'Timeline<->User'
 
     # third_party = models.ForeignKey(ThirdParty, null=True, on_delete=models.PROTECT)
     service_provider_id = models.BigIntegerField()
     client_id = models.BigIntegerField()
     timeline_id = models.BigIntegerField()
     third_party_id = models.BigIntegerField()
+
+    def __str__(self):
+        return self.service_provider + ": " + self.client

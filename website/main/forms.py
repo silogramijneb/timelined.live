@@ -1,5 +1,5 @@
 from dataclasses import field
-from django.forms import ModelForm, DateInput
+from django.forms import ModelForm, DateField
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from .models import ThirdParty, ServiceProvider, Client, Timeline, Event
@@ -121,7 +121,7 @@ class ThirdPartyRegistrationForm(UserCreationForm):
         )
 
         # Submission 
-        self.helper.add_input(Submit('submit', 'Submit'))
+        # self.helper.add_input(Submit('submit', 'Submit'))
 
         # Django form attributes / Field properties
         self.fields['password1'].help_text = None
@@ -134,10 +134,57 @@ class TimelineCreationForm(ModelForm):
     class Meta:
         model = Timeline
         fields = ['name']
+        labels = {
+            'name': 'Timeline Name'
+         }
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Crispy Package Setup
+        self.helper = FormHelper()
+
+        # Set HTTP Request
+        self.form_method = 'POST'
+
+        # Bootstrap 
+        self.helper.layout = Layout(
+            FloatingField('name', css_class='mb_3'),
+            Div(
+                Submit('submit', 'register', css_class='btn btn-primary rounded-pill btn-lg', label='Register'),
+                css_class='d-grid'
+            )
+        )
+
+class DateInput(forms.DateInput):
+    input_type = 'date'  
 
 class EventCreationForm(ModelForm):
     class Meta:
         model = Event
-        fields = ['name', 'description', 'location', 'deadline', 'file']
-        widgets = { 'timeline_id' : forms.HiddenInput 
-                    }
+        fields = ['name', 'description', 'location', 'start_date', 'end_date', 'file']
+        widgets = {
+            'start_date': DateInput(),
+            'end_date': DateInput(),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Crispy Package Setup
+        self.helper = FormHelper()
+
+        # Set HTTP Request
+        self.form_method = 'POST'
+
+        # Bootstrap 
+        self.helper.layout = Layout(
+            FloatingField('name', css_class='mb-3'),
+            FloatingField('description', css_class='mb-3'),
+            FloatingField('location', css_class='mb-3'),
+            FloatingField('start_date', css_class='mb_3'),
+            FloatingField('end_date', css_class='mb_3'),
+            FloatingField('file', css_class='mb-3'),
+            Div(
+                Submit('submit', 'register', css_class='btn btn-primary rounded-pill btn-lg', label='Register'),
+                css_class='d-grid'
+            )
+        )
