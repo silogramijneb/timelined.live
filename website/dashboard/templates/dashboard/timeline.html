@@ -31,7 +31,7 @@
 		<div class="accordion" id="newTimeline">
 			<div class="accordion-item event-accordion">
 				<h2 class="accordion-header" id="eventNameAccordion">
-					<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse0" aria-expanded="true" aria-controls="collapse0">New Event</button>
+					<button id="cardTitle" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse0" aria-expanded="true" aria-controls="collapse0">New Event</button>
 				</h2>
 				<div id="collapse0" class="accordion-collapse collapse show" aria-labelledby="heading0" data-bs-parent="#newTimeline">
 					<div class="accordion-body">
@@ -88,7 +88,7 @@
 	}
 
 	function changeCardTitle() {
-		let cardTitle = document.getElementById('collapse0');
+		let cardTitle = document.getElementById('cardTitle');
 		let newTitle = document.getElementById('eventName').value;
 		cardTitle.innerHTML = newTitle;
 	}
