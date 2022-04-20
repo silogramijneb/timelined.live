@@ -19,10 +19,12 @@
             </div>
 
             <div class="card-body">
-            {% comment %} {% for i in timeline_list %} {% endcomment %}
-                {% comment %} <li>Neil Armstrong</li> {% endcomment %}
-                {% include "dashboard/dash-timeline.html" with timeline_name={{ timeline_list }} percentage_complete="100%" valuenow=100 width="width: 100%" %}
-            {% comment %} {% endfor %} {% endcomment %}
+                {% for for i in '3'|make_list %}
+                    {% comment %} <li>Neil Armstrong</li> {% endcomment %}
+                    <ul>
+                        {% include "dashboard/dash-timeline.html" with timeline_name="Test Timeline" percentage_complete="100%" valuenow=100 width="width: 100%" %}
+                    </ul>
+                {% endfor %}
             </div>
                 
         </div>
