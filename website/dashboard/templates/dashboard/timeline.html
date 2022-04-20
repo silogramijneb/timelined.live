@@ -87,7 +87,7 @@
 		submitButton.style.display="None";
 		let prevDivIndex = "collapse"+divNumber;
 		let prevDiv = document.getElementById(prevDivIndex);
-		console.log("This is working!!");
+		document.getElementById('cardTitle').setAttribute('aria-expanded', false);
 	}
 
 	function changeCardTitle() {
