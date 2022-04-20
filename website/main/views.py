@@ -21,6 +21,7 @@ def generateID(model):
         newID = random.getrandbits(32)
     return newID
 
+
 # Get the client object based on the id
 def getTimeline(timeline_id):
     return Timeline.objects.get(id=timeline_id)
@@ -115,7 +116,7 @@ def createEvent(request, context):
         # Enter requrired non-provided data
         # NOTE: While ID is a unique value for an event. 
         #       Index is it's index relative to the timeline
-        event.id = generateID(Event)
+        #event.id = generateID(Event)
         event.timeline = getTimeline(form.cleaned_data.get('timeline'))
         event.index = getTimeline(Timeline)
         event.status = EventStatus.NOT_STARTED

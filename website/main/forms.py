@@ -161,7 +161,7 @@ class DateInput(forms.DateInput):
 class EventCreationForm(ModelForm):
     class Meta:
         model = Event
-        fields = ['name', 'description', 'location', 'start_date', 'end_date', 'file']
+        fields = ['name', 'description', 'location', 'start_date', 'end_date'] #'file']
         widgets = {
             'start_date': DateInput(),
             'end_date': DateInput(),
@@ -182,7 +182,7 @@ class EventCreationForm(ModelForm):
             FloatingField('location', css_class='mb-3'),
             FloatingField('start_date', css_class='mb_3'),
             FloatingField('end_date', css_class='mb_3'),
-            FloatingField('file', css_class='mb-3'),
+            #FloatingField('file', css_class='mb-3'),
             Div(
                 Submit('submit', 'register', css_class='btn btn-primary rounded-pill btn-lg', label='Register'),
                 css_class='d-grid'
