@@ -133,8 +133,7 @@ def createEvent(request, context):
 def index(response):
     # Defult context for our page
     context = {}
-    context.update({"user_select_form": UserSelectionForm()})
-    context.update({"registration_form":  ClientRegistrationForm()})
+    context.update({"user_select_form": UserSelectionForm(), "registration_form":  ClientRegistrationForm()})
     # Render defult page with updated context
     result = render(response, 'main/index.html', context) 
 
