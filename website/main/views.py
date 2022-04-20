@@ -11,6 +11,7 @@ from .enums import EventStatus
 import json, random
 
 
+
 # These functions route the HTML in the templates folder to the correct view
 
 # Common queries can be done using Classname.objects.filter(condition)
@@ -44,12 +45,13 @@ def getTP(username):
 # Validate registration data and add user to DB if valid 
 def registerUser(response): 
     form = ClientRegistrationForm(response.POST)
-    form = form.select_for_update()
     if form.is_valid():
-        user = form.save()
+        user = form.save(commit=False) # Create the user object, but don't send it
         #user.id = generateID(User)
         user.email = user.username
+        user.save() 
         login(response, user)
+        return redirect('dashboard')
     else:
         return HttpResponse(json.dumps({'message': 'Invalid registration data'})) 
 
@@ -134,12 +136,10 @@ def createEvent(request, context):
 
 def index(response):
     # Defult context for our page
-    context = {}
+    
     #Load Registration Forms 
-    context.update({'client_registration_form': ClientRegistrationForm()})
-    # context.update({"pro_registration_form": ProfessionalRegistrationForm()})
-    # context.update({"tp_registration_form": ThirdPartyRegistrationForm()})
-
+    context = {'registration_form': ClientRegistrationForm()}
+    
     # Render defult page with updated context
     result = render(response, 'main/index.html', context) 
 
@@ -166,7 +166,7 @@ def index(response):
     if response.method == 'POST':
         # On registration submission attempt to create user
         if response.POST.get('submit') == 'register':
-            registerUser(response)
+            result = registerUser(response)
         # On signin submission attempt to signin user
         if response.POST.get('submit') == 'login':
             result = signinUser(response)

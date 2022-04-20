@@ -7,5 +7,5 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("dashboard/", dviews.dashboard, name="dashboard"),
     path("dashboard/timeline/", dviews.timeline, name="timeline"),
-    path("dashboard/evetns/", dviews.events, name="events")
+    path("dashboard/events/", dviews.events, name="events")
 ]
