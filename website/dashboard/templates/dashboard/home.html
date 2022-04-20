@@ -18,8 +18,8 @@
                 <h6 class="m-0 font-weight-bold text-primary">Timelines</h6>
             </div>
 
-            <div class="card-body">
-                {% for for i in '3'|make_list %}
+            <div class="card-body"> 
+                {% for for i in timeline_list %}
                     {% comment %} <li>Neil Armstrong</li> {% endcomment %}
                     <ul>
                         {% include "dashboard/dash-timeline.html" with timeline_name="Test Timeline" percentage_complete="100%" valuenow=100 width="width: 100%" %}
@@ -29,7 +29,9 @@
                 
         </div>
     </div>
-
+    {% for for i in timeline_list %}
+        <li>Neil Armstrong</li> 
+    {% endfor %}
     <!-- Content Row -->
     <div class="row">
 
