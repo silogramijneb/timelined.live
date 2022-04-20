@@ -257,13 +257,13 @@
 						<button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-body border-0 p-4">
-						<form action="{{ registerUser }}" method="POST">
+						{% comment %} <form action="{{ registerUser }}" method="POST"> {% endcomment %}
 							{% load crispy_forms_tags %}
 							{% csrf_token %}
 							{% crispy client_registration_form %}
 							{% comment %} {% crispy pro_registration_form %} {% endcomment %}
 							{% comment %} {% crispy tp_registration_form %} {% endcomment %}
-						</form>
+						{% comment %} </form> {% endcomment %}
 					</div>
 				</div>
 			</div>
