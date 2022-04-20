@@ -66,9 +66,9 @@ class Timeline(models.Model):
 
 class Event(models.Model):
 
-    id = models.BigIntegerField(primary_key=True)
+    _id = models.ObjectIdField()
 
-    index = models.IntegerField()
+    #index = models.IntegerField()
 
     #event name
     name = models.CharField(max_length = 50)
