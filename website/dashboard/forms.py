@@ -9,13 +9,18 @@ class EventForm(ModelForm):
     
     class Meta:
         model = TimelineEvent
-        fields = ['title', 'type', 'description', 'status', 'dependent_on']
+        fields = [
+            'title', 'event_type', 'description', 'status', 'location',
+            'timeline', 'file_upload'
+        ]
         labels = {
-                'title': 'Event Title',
-                'type': 'Event Type',
-                'description': 'Event Description',
-                'status': 'Event Status',
-                'dependent_on': 'Dependencies',
+            'title': 'Event Title',
+            'event_type': 'Type of Event', 
+            'description': 'Description',
+            'status': 'Event Status',
+            'location': 'Address',
+            'timeline': 'Timeline',
+            'file_upload': 'Upload Documents',
         }
     
     def __init__(self, *args, **kwargs):
