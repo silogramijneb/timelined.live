@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
-from ..main.models import Timeline, Document
+from main.models import Timeline, Document
 
 # Create your models here.
 class TimelineEvent(models.Model):
