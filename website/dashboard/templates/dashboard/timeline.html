@@ -89,6 +89,7 @@
 		let prevDiv = document.getElementById(prevDivIndex);
 		prevDiv.className = 'accordion-collapse collapse';
 		document.getElementById('cardTitle').className = 'accordion-button collapsed';
+		document.getElementById('cardTitle').setAttribute('aria-expanded', false);
 	}
 
 	function changeCardTitle() {
