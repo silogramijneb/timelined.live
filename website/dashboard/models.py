@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django import forms
 
 from main.models import Timeline, Document
 
@@ -9,7 +10,7 @@ class TimelineEvent(models.Model):
         db_table = "TimelineEvent"
     
     title = models.CharField(max_length=32)
-    event_type = models.IntegerChoices(
+    event_type = forms.ChoiceField(
         (0, 'meeting'),
         (1, 'schedule_appointment'),
         (2, 'repair'),
@@ -22,7 +23,7 @@ class TimelineEvent(models.Model):
         (9, 'custom'),
     )
     description = models.TextField()
-    status = models.IntegerChoices(
+    status = forms.ChoiceField(
         (0, 'unscheduled'), 
         (1, 'scheduled'),
         (2, 'completed'),
