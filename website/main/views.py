@@ -50,7 +50,7 @@ def registerUser(response):
         user = form.save()
         #user.id = generateID(User)
         user.email = user.username
-        login(response, user)
+        return login(response, user)
     else:
         return HttpResponse(json.dumps({'message': 'Invalid registration data'})) 
 
@@ -172,7 +172,7 @@ def index(response):
     if response.method == 'POST':
         # On registration submission attempt to create user
         if response.POST.get('submit') == 'register':
-            registerUser(response)
+            result = registerUser(response)
         # On signin submission attempt to signin user
         if response.POST.get('submit') == 'login':
             result = signinUser(response)
