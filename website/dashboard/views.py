@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from main.forms import EventCreationForm
-from .forms import EventForm
 
 '''
 # Sends user data from timeline event to database
