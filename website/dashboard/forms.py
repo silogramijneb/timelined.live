@@ -5,7 +5,7 @@ from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit
 from crispy_bootstrap5.bootstrap5 import *
 from .models import TimelineEvent
 
-class EventForm(forms.Form):
+class EventForm(ModelForm):
     
     class Meta:
         model = TimelineEvent
@@ -29,5 +29,5 @@ class EventForm(forms.Form):
                 FloatingField("dependent_on", css_class="mb-3"),
                 ButtonHolder(
                     Submit('submit', 'Submit', css_class="button white")
-                    ),
+                ),
         )

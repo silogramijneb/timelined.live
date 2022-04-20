@@ -10,14 +10,14 @@ def updateEvent(request, context):
     if form.is_valid():
         event = form.save(commit=False)
         event.save()
-    context.update({"create_event_form": form})
+    context.update({"event_form": form})
 
 def createEvent(request, context):
     form = EventForm(request.POST)
     if form.is_valid():
         event = form.save(commit=False)
         event.save()
-    context.update({"create_event_form": form})
+    context.update({"event_form": form})
 
 # Create your views here.
 def dashboard(response):
@@ -26,7 +26,7 @@ def dashboard(response):
 def timeline(request):
     
     context = {}
-    context.update({"create_event_form": EventForm()})
+    context.update({"event_form": EventForm()})
     
     # POST: Update context
     if request.method == "POST":
