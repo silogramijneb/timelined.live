@@ -69,7 +69,7 @@
 								</select>
 							</div>
 							<div class="form-floating mb-3 text-center">
-								<button id="#createEvent" class="btn btn-success rounded-pill px-3 mt-3 mb-lg-0" type="button" onsubmit="createNewEvent()">Create Event</button>
+								<button id="createEvent" class="btn btn-success rounded-pill px-3 mt-3 mb-lg-0" type="button" onsubmit="createNewEvent(0)">Create Event</button>
 							</div>
 						</form>
 					</div>
@@ -82,9 +82,13 @@
 <script>
 
 	let timeline = [];
-	function createNewEvent() {
-		let submitButton = document.getElementById('#createEvent');
+	function createNewEvent(divNumber) {
+		let submitButton = document.getElementById('createEvent');
 		submitButton.style.display="None";
+		let prevDivIndex = "collapse"+divNumber;
+		let prevDiv = document.getElementById(prevDivIndex);
+		prevDiv.appendChild(document.createElement('p').innerHTML="test");
+
 	}
 
 	function changeCardTitle() {
