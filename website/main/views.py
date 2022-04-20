@@ -56,7 +56,7 @@ def registerUser(response):
 
 
 
-# Valididate attempted user signin. Will redirect if valid
+# Validate attempted user signin. Will redirect if valid
 def signinUser(response):
         username = response.POST.get('username')
         password = response.POST.get('password')
