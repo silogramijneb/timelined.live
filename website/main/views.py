@@ -49,6 +49,7 @@ def registerUser(response):
         user = form.save(commit=False) # Create the user object, but don't send it
         #user.id = generateID(User)
         user.email = user.username
+        user.save() 
         return login(response, user)
     else:
         return HttpResponse(json.dumps({'message': 'Invalid registration data'})) 
