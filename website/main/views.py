@@ -2,6 +2,7 @@ from asyncio import events
 from atexit import register
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 from django.http import HttpResponse
 from main.models import User, Client, ServiceProvider, ThirdParty, Timeline, Event
 from .forms import ThirdPartyRegistrationForm, ClientRegistrationForm, ProfessionalRegistrationForm, ThirdPartyRegistrationForm, TimelineCreationForm, EventCreationForm, UserSelectionForm
@@ -43,15 +44,12 @@ def getTP(username):
 # Validate registration data and add user to DB if valid 
 def registerUser(response): 
     form = ClientRegistrationForm(response.POST)
+    form = form.select_for_update()
     if form.is_valid():
-        user = form.save(commit=False)
-        user.id = generateID(User)
+        user = form.save()
+        #user.id = generateID(User)
         user.email = user.username
-        user.save()
-        # Set user's permissions
-            # Group logic
         login(response, user)
-        return redirect('dashboard')
     else:
         return HttpResponse(json.dumps({'message': 'Invalid registration data'})) 
         
@@ -123,6 +121,7 @@ def createEvent(request, context):
 
         # Add timeline to Database
         event.save()
+        messages.success(request, f"{event.title} was created!")
 
     # Return an error or validation message depending on succes
     return HttpResponse(json.dumps({'message': message}))

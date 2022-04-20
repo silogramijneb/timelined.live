@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.contrib import messages
 
 from main.forms import EventCreationForm
 
@@ -13,8 +14,7 @@ def updateEvent(request, context):
     context.update({"event_form": form})
 
 def createEvent(request, context):
-    form = EventForm(request.POST)
-    if form.is_valid():
+    form = EventForm(request.POST) if form.is_valid():
         event = form.save(commit=False)
         event.save()
     context.update({"event_form": form})
@@ -27,7 +27,7 @@ def dashboard(response):
     return render(response, "dashboard/home.html", context)
 
 '''
-def timeline(request):` `
+def timeline(request):
     
     context = {}
     context.update({"event_form": EventForm()})
@@ -48,12 +48,15 @@ def timeline(request):` `
 
 def timeline(request):
     context = {}
-    form = EventCreationForm(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        form.save()
+    if request.method == "POST":
+        form = EventCreationForm(request.POST or None, request.FILES or None)
+        if form.is_valid():
+            form.save()
+            event_title = form.cleaned_data.get('title')
+            messages.success(request, f'{event_title} created!')
     
-    context['form'] = form
-    return render(request, "dashboard/timeline.html", context)
+        context['form'] = form
+        return render(request, "dashboard/timeline.html", context)
 
 def events():
     return render("dashboard/events.html")

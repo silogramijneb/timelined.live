@@ -11,6 +11,7 @@ class Profile(User):
     class Meta:
         db_table = 'TimelineUser'
 
+    _id = djongo_models.ObjectIdField()
     phone = models.CharField(max_length=10, null=True)
 
     def __str__(self):
