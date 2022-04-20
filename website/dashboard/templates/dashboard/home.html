@@ -16,11 +16,11 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Timelines</h6>
+                <h6 class="m-0 font-weight-bold text-primary">{{ timeline }}</h6>
             </div>
 
             <div class="card-body"> 
-                {% for i in timeline_list %}
-                    {% comment %} <li>Neil Armstrong</li> {% endcomment %}
+                {%  for in timeline_list %}
                     <ul>
                         {% include "dashboard/dash-timeline.html" with timeline_name="Test Timeline" percentage_complete="100%" valuenow=100 width="width: 100%" %}
                     </ul>
@@ -29,7 +29,7 @@
                 
         </div>
     </div>
-    {% for i in timeline_list %}
+    {% for for i in timeline_list %}
         <li>Neil Armstrong</li> 
     {% endfor %}
     <!-- Content Row -->
