@@ -3,8 +3,11 @@ from django.forms import ModelForm
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit
 from crispy_bootstrap5.bootstrap5 import *
-from .models import TimelineEvent
 
+from .models import TimelineEvent
+from main.forms import EvenCreationForm
+
+'''
 class EventForm(ModelForm):
     
     class Meta:
@@ -15,3 +18,4 @@ class EventForm(ModelForm):
             'description': 'Description',
         }
         exclude = ['date_created', 'date_last_modified', 'date_completed', 'timeline']
+'''
