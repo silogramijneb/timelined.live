@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_fastdev'
+    'django_fastdevcrispy_forms'
     'crispy_forms',
     'crispy_bootstrap5',
     'main', # MVC
