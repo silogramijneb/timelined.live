@@ -18,15 +18,11 @@
                 <h6 class="m-0 font-weight-bold text-primary">Timelines</h6>
             </div>
             <div class="card-body">
-
-            {% include "dashboard/dash-timeline.html" with timeline_name="Test Timeline" percentage_complete="100%" valuenow=100 width="width: 100%" %}
-            {% include "dashboard/dash-timeline.html" %}
-            {% include "dashboard/dash-timeline.html" %}
-            {% include "dashboard/dash-timeline.html" %}
-            {% include "dashboard/dash-timeline.html" %}
-            {% include "dashboard/dash-timeline.html" %}
-            {% include "dashboard/dash-timeline.html" %}
-
+            
+            {% for timeline in timeline_list %}
+                {% include "dashboard/dash-timeline.html" with timeline_name="Test Timeline" percentage_complete="100%" valuenow=100 width="width: 100%" %}
+            {% endfor %}
+            
             </div>
                 
         </div>
