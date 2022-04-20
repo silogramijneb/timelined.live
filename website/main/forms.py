@@ -205,7 +205,7 @@ class EventCreationForm(ModelForm):
         # Bootstrap 
         self.helper.layout = Layout(
             FloatingField('name', css_class='mb-3'),
-            Field('text', 'description', css_class='mb-3'),
+            FloatingField('text', 'description', css_class='mb-3'),
             FloatingField('location', css_class='mb-3'),
             FloatingField('start_date', css_class='mb_3'),
             FloatingField('end_date', css_class='mb_3'),
