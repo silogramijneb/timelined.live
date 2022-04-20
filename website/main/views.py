@@ -176,3 +176,5 @@ def maketimeline(response):
    
     # Return the timeline to the front end
     return render(response, 'main/index.html', context)
+
+
