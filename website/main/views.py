@@ -138,8 +138,8 @@ def index(response):
     context.update({"user_select_form": UserSelectionForm()})
     #Load Registration Forms 
     context.update({"client_registration_form": ClientRegistrationForm()})
-    context.update({"pro_registration_form": ProfessionalRegistrationForm()})
-    context.update({"tp_registration_form": ThirdPartyRegistrationForm()})
+    # context.update({"pro_registration_form": ProfessionalRegistrationForm()})
+    # context.update({"tp_registration_form": ThirdPartyRegistrationForm()})
 
     # Render defult page with updated context
     result = render(response, 'main/index.html', context) 
