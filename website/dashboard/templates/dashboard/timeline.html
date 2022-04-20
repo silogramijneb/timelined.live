@@ -65,16 +65,24 @@
 	let timeline = [];
 	let divNumber = 0;
 	function createNewEvent(divNumber) {
+
+		/* Hide Create Event Button */
 		let submitButton = document.getElementById('createEvent');
 		submitButton.style.display="None";
+
+		/* Get index from div */
 		let prevDivIndex = "collapse"+divNumber;
 		let prevDiv = document.getElementById(prevDivIndex);
+
+		
 		prevDiv.className = 'accordion-collapse collapse';
 		document.getElementById('cardTitle' + divNumber).className = 'accordion-button collapsed';
 		document.getElementById('cardTitle' + divNumber).setAttribute('aria-expanded', false);
+
 		let prevEvent = document.getElementById("newTimeline" + divNumber);
 		let newEvent = prevEvent.cloneNode(prevEvent);
 		newEvent.id = "newTimeline" + (divNumber+1);
+		newEvent.querySelector('collapse'+divNumber).setAttribute(id, 'collapse'+divNumber);
 		prevEvent.appendChild(newEvent);
 
 		document.getElementById('eventsRow').appendChild(newEvent);
