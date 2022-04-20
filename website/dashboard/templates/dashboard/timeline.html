@@ -27,7 +27,7 @@
 		</div>
     </div>
 	-->
-	<div class="row">
+	<div class="row" id="eventsRow">
 		<div class="accordion" id="newTimeline">
 			<div class="accordion-item event-accordion">
 				<h2 class="accordion-header" id="eventNameAccordion">
@@ -69,7 +69,7 @@
 								</select>
 							</div>
 							<div class="form-floating mb-3 text-center">
-								<button id="createEvent" class="btn btn-success rounded-pill px-3 mt-3 mb-lg-0" type="button" onsubmit="createNewEvent(0)">Create Event</button>
+								<button id="createEvent" class="btn btn-success rounded-pill px-3 mt-3 mb-lg-0" type="button" onsubmit="validateForm();">Create Event</button>
 							</div>
 						</form>
 					</div>
@@ -90,6 +90,8 @@
 		prevDiv.className = 'accordion-collapse collapse';
 		document.getElementById('cardTitle').className = 'accordion-button collapsed';
 		document.getElementById('cardTitle').setAttribute('aria-expanded', false);
+		let newEvent = document.getElementById('newTimeline').cloneNode(true);
+		document.getElementById('eventsRow').appendChild(newEvent);
 	}
 
 	function changeCardTitle() {
