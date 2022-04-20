@@ -9,7 +9,7 @@ from .forms import ThirdPartyRegistrationForm, ClientRegistrationForm, Professio
 from .decorators import unauthenticated_user 
 from .enums import EventStatus
 import json, random
-from crispy_forms.helper import FormHelper
+
 
 
 # These functions route the HTML in the templates folder to the correct view
@@ -133,16 +133,16 @@ def createEvent(request, context):
 
 ### Define more functions for queries (Not sure if this is the right file for this)
 
-def index(response):
+def index(request):
     # Defult context for our page
-    context = {}
+    
     #Load Registration Forms 
-    context.update({'client_registration_form': ClientRegistrationForm()})
+    context.update({'registration_form': ClientRegistrationForm()})
     # context.update({"pro_registration_form": ProfessionalRegistrationForm()})
     # context.update({"tp_registration_form": ThirdPartyRegistrationForm()})
 
     # Render defult page with updated context
-    result = render(response, 'main/index.html', context) 
+    result = render(request, 'main/index.html', context) 
 
     """
     # POST: Update Context
