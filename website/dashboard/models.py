@@ -1,27 +1,54 @@
 from django.db import models
 from django.utils import timezone
 
+from ..main.models import Timeline, Document
+
 # Create your models here.
 class TimelineEvent(models.Model):
-
-    class Type(models.IntegerChoices):
-        MEETING = 0
-        SCHEDULE_APPOINTMENT = 1
-        REPAIR = 2
-        MAINTAINANCE = 3
-        VERIFICATION = 4
-        VIEWING = 5
-        CHECK_UP = 6
-        DOCUMENT_UPLOAD = 7
+    class Meta:
+        db_table = "TimelineEvent"
     
-    class Status(models.IntegerChoices):
-        UNSCHEDULED = 0
-        SCHEDULED = 1
-        COMPLETED = 2
-        UPCOMING = 3
-
     title = models.CharField(max_length=32)
-    event_type = models.IntegerField(choices=Type.choices)
-    description = models.CharField(max_length=240)
-    status = models.IntegerField(choices=Status.choices)
-    dependent_on  = models.CharField(max_length=32)
+    event_type = models.IntegerChoices(
+        (0, 'meeting'),
+        (1, 'schedule_appointment'),
+        (2, 'repair'),
+        (3, 'maintainenance'),
+        (4, 'verification'),
+        (5, 'document_upload'),
+        (6, 'inspection'),
+        (7, 'check_up'),
+        (8, 'contact'),
+        (9, 'custom'),
+    )
+    description = models.TextField()
+    status = models.IntegerChoices(
+        (0, 'unscheduled'), 
+        (1, 'scheduled'),
+        (2, 'completed'),
+        (3, 'in_progress'),
+        (4, 'upcoming'),
+        (5, 'overdue'),
+    )
+    location = models.AutoField()
+    date_created = models.DateField(auto_now_add=True)
+    date_last_modified = models.DateField(auto_now=True)
+    date_completed = models.DateField(null=True)
+    timeline = models.ForeignKey(Timeline, on_delete=models.CASCADE)
+    file_upload = models.OneToOneField(Document, on_delete=models.CASCADE, null=True)
+    
+    def __str__(self):
+        return {
+            "title": self.title,
+            "event_type": self.event_type,
+            "description": self.description,
+            "status": self.status,
+            "location": self.location,
+            "history": {
+                "date_created": self.date_created,
+                "date_last_modified": self.date_last_modified,
+                "date_completed": self.date_completed,
+            },
+            "timeline": self.timeline,
+            "file_upload": self.file_upload,
+        }

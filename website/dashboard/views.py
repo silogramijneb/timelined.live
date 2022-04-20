@@ -35,7 +35,7 @@ def timeline(request):
 
     # POST: Save Form
     if request.method == "POST":
-        if request.POST.get("action") == 'submit':
+        if request.POST.get("action") == 'createEvent':
             createEvent(request, context)
             
     result = render(request, "dashboard/timeline.html", context)            
