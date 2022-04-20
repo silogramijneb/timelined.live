@@ -17,17 +17,14 @@
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Timelines</h6>
             </div>
+
             <div class="card-body">
-            
-            <ul>
             {% for i in timeline_list %}
                 <li>Neil Armstrong</li>
                 {% comment %} <div class="row"> {% endcomment %}
                     {% comment %} {% include "dashboard/dash-timeline.html" with timeline_name="Test Timeline" percentage_complete="100%" valuenow=100 width="width: 100%" %} {% endcomment %}
                 {% comment %} </div> {% endcomment %}
             {% endfor %}
-            </ul>
-
             </div>
                 
         </div>
