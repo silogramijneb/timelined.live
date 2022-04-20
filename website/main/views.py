@@ -136,7 +136,7 @@ def index(response):
     # Defult context for our page
     context = {}
     #Load Registration Forms 
-    context.update({"client_registration_form": ClientRegistrationForm()})
+    context.update({'client_registration_form': ClientRegistrationForm()})
     # context.update({"pro_registration_form": ProfessionalRegistrationForm()})
     # context.update({"tp_registration_form": ThirdPartyRegistrationForm()})
 
