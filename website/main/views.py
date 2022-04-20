@@ -15,6 +15,8 @@ import json, random
 # These functions route the HTML in the templates folder to the correct view
 
 # Common queries can be done using Classname.objects.filter(condition)
+def getName(model):
+    return User.first_name
 
 # Get unique ID based on model
 def generateID(model):
