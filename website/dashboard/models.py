@@ -33,7 +33,7 @@ class TimelineEvent(models.Model):
         (5, 'overdue'),
     )
     status = forms.ChoiceField(choices=statuses)
-    location = models.AutoField()
+    location = models.CharField(max_length=64)
     date_created = models.DateField(auto_now_add=True)
     date_last_modified = models.DateField(auto_now=True)
     date_completed = models.DateField(null=True)
