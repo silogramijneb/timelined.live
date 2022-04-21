@@ -46,7 +46,7 @@ def getTP(username):
 
 # Validate registration data and add user to DB if valid 
 def registerUser(response, accType):
-    # form = ClientRegistrationForm(response.POST)
+    form = ClientRegistrationForm(response.POST)
     # if accType == 'Professional':
     #     form = ProfessionalRegistrationForm(response.POST)
     # if accType == 'Third Party':
@@ -192,7 +192,8 @@ def index(response):
     if response.method == 'POST':
         # On registration submission attempt to create user
         if response.POST.get('submit') == 'register':
-            result = registerUser(response, accType)
+            #result = registerUser(response, accType)
+            result = registerUser(response)
         # On signin submission attempt to signin user
         if response.POST.get('submit') == 'login':
             result = signinUser(response)
