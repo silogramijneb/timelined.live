@@ -47,20 +47,19 @@ def getTP(username):
 # Validate registration data and add user to DB if valid 
 def registerUser(response):
     form = ClientRegistrationForm(response.POST)
-    if response.method == 'POST':
-        if form.is_valid():
-            user = form.save() # Create the user object, but don't send it
-            # user.email = user.username
-            # user.save() 
-            login(response, user)
-            return redirect('dashboard')
-        else:
-            return HttpResponse(json.dumps({'message': 'Invalid registration data'})) 
+    if form.is_valid():
+        user = form.save(commit=False) # Create the user object, but don't send it
+        user.email = user.username
+        user.save() 
+        login(response, user)
+        return redirect('dashboard')
+    else:
+        return HttpResponse(json.dumps({'message': 'Invalid registration data'})) 
 
 
 # Validate attempted user signin. Will redirect if valid
 def signinUser(response):
-        #username = response.POST.get('username')
+        username = response.POST.get('username')
         password = response.POST.get('password')
 
         user = authenticate(response, username=username, password=password)
