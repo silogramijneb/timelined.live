@@ -53,7 +53,7 @@ def timeline(request):
 
 def signout(request):
     if request.GET.get('logout') == 'logout':
-        signoutUser(request);
+        signoutUser(request)
 
 
 '''
