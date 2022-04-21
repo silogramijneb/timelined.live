@@ -66,60 +66,24 @@
 	let divNumber = 0;
 	function createNewEvent(divNumber) {
 
-		document.getElementById('createEvent').style.display="none";
-		let currentDiv = document.getElementById('newTimeline'+divNumber);
-		let html = [
-			`<div class="accordion pb-2" id="newTimeline${divNumber}">`,
-			`<div class="accordion-item event-accordion" id="evAccordian${divNumber}">`,
-			`<h2 class="accordion-header" id="eventNameAccordion${divNumber}">`,
-			`<button id="cardTitle${divNumber}" class="accordion-button" type="button" data-bs-toggle="collapse${divNumber}" data-bs-target="#collapse${divNumber}" aria-expanded="true" aria-controls="collapse${divNumber}">New Event</button>`,
-			'</h2>',
-			`<div id="collapse${divNumber}" class="accordion-collapse collapse show" aria-labelledby="heading" data-bs-parent="#newTimeline">`,
-			'<div class="accordion-body">',
-			`<form id="timeline-event">`,
-			'<div class="form-group mt-3 mb-3">',
-			'<select class="form-select" id="eventType">',
-			'<option selected>Event Type</option>',
-			'<option value="meeting">Meeting</option>',
-			'<option value="schedule_appointment">Schedule Appointment</option>',
-			'<option value="repair">Repair</option>',
-			'<option value="maintenance">Maintenance</option>',
-			'<option value="verification">Verification</option>',
-			'<option value="inspection">Inspection</option>',
-			'<option value="check_up">Check Up</option>',
-			'<option value="contact">Contact</option>',
-			'<option value="custom">Custom</option>',
-			'</select>',
-			'</div>',
-			'<div class="form-floating mb-3">',
-			`<input type="text" class="form-control" id="eventName" onsubmit="${changeCardTitle()}">`,
-			'<label for="eventName">Event Name</label>',
-			'</div>',
-			'<div class="form-floating mb-3">',
-			'<textarea type="text" class="form-control" id="eventDescription" style="height: 100px"></textarea>',
-			'<label for="eventDescription">Description</label>',
-			'</div>',
-			'<div class="form-group mb-3">',
-			'<select class="form-select" id="eventStatus">',
-			'<option selected>Event Status</option>',
-			'<option value="Unscheduled">Unscheduled</option>',
-			'<option value="Scheduled">Scheduled</option>',
-			'<option value="Completed">Completed</option>',
-			'<option value="Upcoming">Upcoming</option>',
-			'<option value="Past Due">Past Due</option>',
-			'</select>',
-			'</div>',
-			'<div class="form-floating mb-3 text-center">',
-			`<button id="createEvent" class="btn btn-success rounded-pill px-3 mt-3 mb-lg-0" type="button" onsubmit="${validateForm()};">Create Event</button>`,
-			'</div>',
-			'</form>',
-			'</div>',
-			'</div>',
-			'</div>',
-			'</div>',
-		].join('');
+		/* Hide Create Event Button */
+		let submitButton = document.getElementById('createEvent');
+        submitButton.style.display="None";
 
-		document.getElementById('eventsRow').appendChild(html);
+        /* Get index from div */
+        let prevDivIndex = "collapse"+divNumber;
+        let prevDiv = document.getElementById(prevDivIndex);
+
+        
+        prevDiv.className = 'accordion-collapse collapse';
+        document.getElementById('cardTitle' + divNumber).className = 'accordion-button collapsed';
+        document.getElementById('cardTitle' + divNumber).setAttribute('aria-expanded', false);
+
+        let prevEvent = document.getElementById("newTimeline" + divNumber);
+        let newEvent = prevEvent.cloneNode(prevEvent);
+        newEvent.id = "newTimeline" + (divNumber+1);
+
+        document.getElementById('eventsRow').appendChild(newEvent);
 	}
 
 	function changeCardTitle() {
