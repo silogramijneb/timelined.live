@@ -51,13 +51,14 @@ def registerUser(response, accType):
         #user = form.save(commit=False) # Create the user object, but don't send it
         form.save(commit=False) # benji test
         #user.id = generateID(User)
-        username = form.cleaned_data.get('username') # benji test
-        raw_password = form.cleaned_data.get('password1') # benji test
-        user = authenticate(username=username, password=raw_password)
-        user.email = user.username
-        user.save() 
-        login(response, user)
-        return redirect('dashboard')
+        username = response.POST.get('username') # benji test
+        password = response.POST.get('password1') # benji test
+        user = authenticate(username=username, password=password) # benji test
+        if user is not None: # benji test    
+            user.email = user.username
+            user.save() 
+            login(response, user)
+            return redirect('dashboard')
     else:
         return HttpResponse(json.dumps({'message': 'Invalid registration data'})) 
 
