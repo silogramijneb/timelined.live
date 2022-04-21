@@ -39,6 +39,11 @@
 	let timeline = [];
 	let divNumber = 0;
 
+	function changeCardTitle(divNumber) {
+		let divToChange = document.getElementById('cardTitle'+divNumber);
+		divToChange.innerHTML = divToChange.value;
+	}
+
 	function changeEvent(divNumber) {
 		console.log(divNumber);
 		let currDiv = document.getElementById('newTimeline'+divNumber);
@@ -53,6 +58,7 @@
 
 		nextDiv.className = 'accordion pb-2';
 		nextDiv.scrollIntoView();
+		changeCardTitle();
 		divNumber++;
 	}
 
