@@ -48,8 +48,12 @@ def getTP(username):
 def registerUser(response): 
     form = ClientRegistrationForm(response.POST)
     if form.is_valid():
-        user = form.save(commit=False) # Create the user object, but don't send it
+        #user = form.save(commit=False) # Create the user object, but don't send it
+        form.save(commit=False) # benji test
         #user.id = generateID(User)
+        username = form.cleaned_data.get('username') # benji test
+        raw_password = form.cleaned_data.get('password1') # benji test
+        user = authenticate(username=username, password=raw_password)
         user.email = user.username
         user.save() 
         login(response, user)
