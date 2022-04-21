@@ -162,11 +162,11 @@ def index(response):
     result = render(response, 'main/index.html', context) 
 
     if response.method == 'POST':
-        if response.POST.get('user_select') == 'Client_Select':
+        if response.POST.get('user_select') == 'Client Account':
             accType = 'Client'
-        if response.POST.get('user_select') == 'Professional_Select':
+        if response.POST.get('user_select') == 'Service Professional Account':
             accType = 'Professional'
-        if response.POST.get('user_select') == 'TP_Select':
+        if response.POST.get('user_select') == 'Third Party Account':
             accType = 'Third Party'
 
     """
