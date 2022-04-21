@@ -10,7 +10,6 @@
 
 	<div class="row" id="eventsRow">
 		{% for i in maxEventNumbers %}
-		<!-- Hide all created events except first -->
 			{% if i > 0 %} 
 				<div class="accordion pb-2 no-show" id="newTimeline{{i}}">
 			{% else %}
@@ -25,6 +24,9 @@
 							{% load crispy_forms_tags %}
 							{% csrf_token %}
 							{% crispy form %}
+							<div class="form-group text-center mt-3">
+									<button class="btn btn-success rounded-pill" type="button" onclick="createEvent({{i}})">New Event</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -38,13 +40,17 @@
 	let timeline = [];
 	
 	function createEvent(divNumber) {
+		divNumber = parseInt(divNumber);
 		let thisDiv = document.getElementById('newTimeline'+divNumber);
 		let nextDiv = document.getElementById('newTimeline'+(divNumber+1));
 		
 		/* Collapse previous div, show next div expanded */
 		nextDiv.className = 'accordion pb-2';
+		let collapseDiv = document.getElementById('collapse'+divNumber);
+		collapseDiv.className = 'accordion-collapse collapse";
 		let collapseDiv = document.getElementById('cardTitle'+divNumber);
-		collapseDiv.data.bs.toggle="collapse";
+		collapseDiv.className = 'accordion-button collapsed';
+		collapseDiv.aria.expanded = "false";
 	}
 </script>
 {% endblock %}
