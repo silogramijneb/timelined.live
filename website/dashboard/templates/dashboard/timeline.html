@@ -69,12 +69,12 @@
 		document.getElementById('createEvent').style.display="none";
 		let currentDiv = document.getElementById('newTimeline'+divNumber);
 		let html = [
-			'<div class="accordion pb-2" id="newTimeline`${divNumber}`">',
-			'<div class="accordion-item event-accordion" id="evAccordian`${divNumber}`">',
-			'<h2 class="accordion-header" id="eventNameAccordion`${divNumber}`">',
-			'<button id="cardTitle`${divNumber}`" class="accordion-button" type="button" data-bs-toggle="collapse`${divNumber}`" data-bs-target="#collapse`${divNumber}`" aria-expanded="true" aria-controls="collapse`${divNumber}`">New Event</button>',
+			`<div class="accordion pb-2" id="newTimeline${divNumber}">`,
+			`<div class="accordion-item event-accordion" id="evAccordian`${divNumber}`">`,
+			`<h2 class="accordion-header" id="eventNameAccordion`${divNumber}`">`,
+			`<button id="cardTitle`${divNumber}`" class="accordion-button" type="button" data-bs-toggle="collapse`${divNumber}`" data-bs-target="#collapse`${divNumber}`" aria-expanded="true" aria-controls="collapse`${divNumber}`">New Event</button>`,
 			'</h2>',
-			'<div id="collapse`${divNumber}`" class="accordion-collapse collapse show" aria-labelledby="heading" data-bs-parent="#newTimeline">',
+			`<div id="collapse`${divNumber}`" class="accordion-collapse collapse show" aria-labelledby="heading" data-bs-parent="#newTimeline">`,
 			'<div class="accordion-body">',
 			'<form onsubmit="event.preventDefault(); validateForm();" id="timeline-event">',
 			'<div class="form-group mt-3 mb-3">',
