@@ -139,8 +139,8 @@ def index(response):
     
     #Load Registration Forms 
     context = {
-        'registration_form': ClientRegistrationForm(),
-        'login_form': LoginForm()
+        'registration_form': LoginForm(),
+        # 'login_form': 
         }
     
     # Render defult page with updated context
