@@ -66,24 +66,9 @@
 	let divNumber = 0;
 	function createNewEvent(divNumber) {
 
-		/* Hide Create Event Button */
-		let submitButton = document.getElementById('createEvent');
-		submitButton.style.display="None";
-
-		/* Get index from div */
-		let prevDivIndex = "collapse"+divNumber;
-		let prevDiv = document.getElementById(prevDivIndex);
-
-		
-		prevDiv.className = 'accordion-collapse collapse';
-		document.getElementById('cardTitle' + divNumber).className = 'accordion-button collapsed';
-		document.getElementById('cardTitle' + divNumber).setAttribute('aria-expanded', false);
-
-		let prevEvent = document.getElementById("newTimeline" + divNumber);
-		let newEvent = prevEvent.cloneNode(prevEvent);
-		newEvent.id = "newTimeline" + (divNumber+1);
-
-		document.getElementById('eventsRow').appendChild(newEvent);
+		document.getElementById('createEvent').style.display="none";
+		let currentDiv = document.getElementById('collapse'+divNumber);
+		console.log(currentDiv);
 	}
 
 	function changeCardTitle() {
