@@ -25,7 +25,7 @@
 							{% csrf_token %}
 							{% crispy form %}
 							<div class="form-group text-center mt-3">
-								<button class="btn btn-success rounded-pill" type="button" onclick="createEvent()" id="createEventButton" >New Event</button>
+								<button class="btn btn-success rounded-pill" type="button" onclick="createEvent({{i}})" id="createEventButton" >New Event</button>
 							</div>
 						</div>
 					</div>
@@ -48,7 +48,7 @@
 	function createEvent() {
 		let button = document.getElementById('createEventButton');
 		divNumber = parseInt(button.value);
-		
+
 		button.addEventListener("click", function() {
 			let thisDiv = document.getElementById('newTimeline'+divNumber);
 			let nextDiv = document.getElementById('newTimeline'+(divNumber+1));
