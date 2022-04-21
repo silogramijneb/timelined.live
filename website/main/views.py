@@ -198,7 +198,7 @@ def index(response):
             result = signinUser(response)
 
     # Refresh Page, Redirect Page, or provide a JSON containing an error message
-    return result
+    return render(response, 'main/index.html', context) 
 
 
 
