@@ -224,14 +224,14 @@
 						{% comment %} <form action="" method="POST"> {% endcomment %}
 							{% load crispy_forms_tags %}
 							{% csrf_token %}
-							<div class = 'row'>
-								<div class="col">
+							<div class = 'row text-center'>
+								<div class="d-inline">
 									<input type="submit" id="client_select" name="user_select" class = 'btn btn-primary rounded-pill btn-sm' value = 'Account'>
 								</div>
-								<div class="col">
+								<div class="d-inline">
 									<input type="submit" id="pro_select" name="user_select" class = 'btn btn-primary rounded-pill btn-sm' value = 'Professional'>
 								</div>
-								<div class="col">
+								<div class="d-inline">
 									<input type="submit" id="tp_select" name="user_select" class = 'btn btn-primary rounded-pill btn-sm' value = 'Third Party'>
 								</div>
 							</div>
