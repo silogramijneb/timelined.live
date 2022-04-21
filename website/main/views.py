@@ -54,7 +54,8 @@ def registerUser(response):
         login(response, user)
         return redirect('dashboard')
     else:
-        return HttpResponse(json.dumps({'message': 'Invalid registration data'})) 
+        return redirect('dashboard')
+        # return HttpResponse(json.dumps({'message': 'Invalid registration data'})) 
 
 
 # Validate attempted user signin. Will redirect if valid
@@ -63,14 +64,15 @@ def signinUser(response):
         password = response.POST.get('password')
 
         user = authenticate(username=email, password=password)
-        message = 'Invalid email or password.'
+        # message = 'Invalid email or password.'
             
         if user is not None:
             # Logic should be implemented to direct user based on their role
             login(response, user)
             return redirect('dashboard')
         else:
-            return HttpResponse(json.dumps({'message': message}))
+            return redirect('dashboard')
+            # return HttpResponse(json.dumps({'message': message}))
 
 # Logout current user and send them back to homepage
 def signoutUser(request):

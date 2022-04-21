@@ -158,7 +158,7 @@ class ThirdPartyRegistrationForm(UserCreationForm):
 
 class LoginForm(forms.Form):
     email = forms.EmailField(label='Email Address')
-    password = forms.CharField(label='Password')
+    password = forms.CharField(widget=forms.PasswordInput, label='Password')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

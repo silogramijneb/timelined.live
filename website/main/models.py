@@ -11,7 +11,7 @@ class Profile(User):
     class Meta:
         db_table = 'TimelineUser'
 
-    # _id = djongo_models.ObjectIdField()
+    #_id = djongo_models.ObjectIdField()
     phone = models.CharField(max_length=10, null=True)
 
     def __str__(self):
@@ -32,6 +32,7 @@ class Client(Profile):
     class Meta:
         db_table = 'Client'
 
+    _id = djongo_models.ObjectIdField()
     date_of_birth = models.DateField(blank=True, null=True)
 
     def __str__(self):

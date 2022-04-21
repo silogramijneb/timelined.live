@@ -25,7 +25,7 @@
 							{% csrf_token %}
 							{% crispy form %}
 							<div class="form-group text-center mt-3">
-									<button class="btn btn-success rounded-pill" type="button" id="createEventButton" value={{i}}>New Event</button>
+									<button class="btn btn-success rounded-pill" type="button" id="createEventButton" >New Event</button>
 							</div>
 						</div>
 					</div>
@@ -40,21 +40,22 @@
 	let timeline = [];
 	let divNumber = 0;
 
-	window.addEventListener('load', function() => {
+	window.addEventListener('load', function() {
 		let errorLabels = document.querySelectorAll('.invalid-feedback');
 		errorLabels.forEach(function(tag) { tag.style.display="none" });
 	});
 
-	document.getElementById('createEventButton').addEventListener("click", function() => {
-		
+	let buttons = document.querySelectorAll('createEventButton');
+	buttons.forEach(function(button) {
 		divNumber = parseInt(document.getElementById('createEventButton').value);
+		button.addEventListener("click", function() {
+			let thisDiv = document.getElementById('newTimeline'+divNumber);
+			let nextDiv = document.getElementById('newTimeline'+(divNumber+1));
 
-		let thisDiv = document.getElementById('newTimeline'+divNumber);
-		let nextDiv = document.getElementById('newTimeline'+(divNumber+1));
-		
-		nextDiv.style.display="block";
-		nextDiv.scrollIntoView();
+			nextDiv.className = 'accordion pb-2';
+			nextDiv.scrollIntoView();
+		});
 	});
-		
+
 </script>
 {% endblock %}
