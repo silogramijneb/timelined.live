@@ -41,6 +41,7 @@
 
 	function changeCardTitle(divNumber) {
 		let newVal = document.getElementById('id_name');
+		newVal.setAttribute('id', 'id_name'+divNumber);
 		let oldDiv = document.getElementById('cardTitle'+divNumber);
 		oldDiv.innerHTML = newVal.value;
 	}
