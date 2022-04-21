@@ -61,9 +61,6 @@
 </div>
 
 <script>
-<<<<<<< HEAD
-=======
-
 	let timeline = [];
 	function createNewEvent(divNumber) {
 		let submitButton = document.getElementById('createEvent');
@@ -72,6 +69,8 @@
 		let prevDiv = document.getElementById(prevDivIndex);
 		prevDiv.className = 'accordion-collapse collapse';
 		document.getElementById('cardTitle').className = 'accordion-button collapsed';
+		let newDiv = prevDiv.cloneNodes(prevDiv);
+		document.getElementById('eventRow').appendChild(newDiv);
 	}
 
 	function changeCardTitle() {
@@ -90,6 +89,5 @@
 			return true;
 		}
 	}
->>>>>>> parent of a4750cc... update
 </script>
 {% endblock %}
