@@ -224,10 +224,10 @@
 						{% comment %} <form action="" method="POST"> {% endcomment %}
 							{% load crispy_forms_tags %}
 							{% csrf_token %}
-							<div class = 'd-inline'>
-								<input type="submit" id="client_select" name="user_select" class = 'btn btn-primary rounded-pill btn-sm' value = 'Client'><br>
-								<input type="submit" id="pro_select" name="user_select" class = 'btn btn-primary rounded-pill btn-sm' value = 'Professional'><br>
-								<input type="submit" id="tp_select" name="user_select" class = 'btn btn-primary rounded-pill btn-sm' value = 'Third Party'><br>
+							<div class = 'row'>
+								<input class="col" type="submit" id="client_select" name="user_select" class = 'btn btn-primary rounded-pill btn-sm' value = 'Client'><br>
+								<input class="col" type="submit" id="pro_select" name="user_select" class = 'btn btn-primary rounded-pill btn-sm' value = 'Professional'><br>
+								<input class="col" type="submit" id="tp_select" name="user_select" class = 'btn btn-primary rounded-pill btn-sm' value = 'Third Party'><br>
 							</div>
 							{% crispy registration_form %}
 							{% comment %} {% crispy pro_registration_form %} {% endcomment %}
