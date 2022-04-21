@@ -59,10 +59,10 @@ def registerUser(response):
 
 # Validate attempted user signin. Will redirect if valid
 def signinUser(response):
-        username = response.POST.get('username')
+        email = response.POST.get('email')
         password = response.POST.get('password')
 
-        user = authenticate(response, username=username, password=password)
+        user = authenticate(username=email, password=password)
         message = 'Invalid email or password.'
             
         if user is not None:

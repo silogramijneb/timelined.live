@@ -24,8 +24,8 @@ def createEvent(request, context):
 
 # Create your views here.
 def dashboard(response):
-    context = {'timeline_list' : [1, 2, 3, 4, 5, 6, 7, 8],
-                'teststring' : "CONTEXT WAS PASSED"}
+    context = {'timeline_list' : [1, 2, 3, 4, 5]
+                'teststring' : "Your Timelines"}
     return render(response, "dashboard/home.html", context)
 
 
