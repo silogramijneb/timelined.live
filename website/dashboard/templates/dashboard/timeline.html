@@ -16,7 +16,7 @@
 				</h2>
 				<div id="collapse0" class="accordion-collapse collapse show" aria-labelledby="heading" data-bs-parent="#newTimeline">
 					<div class="accordion-body">
-						<form onsubmit="event.preventDefault()" id="timeline-event">
+						<form id="timeline-event">
 							<div class="form-group mt-3 mb-3">
 								<select class="form-select" id="eventType">
 									<option selected>Event Type</option>
@@ -32,7 +32,7 @@
 								</select>
 							</div>
 							<div class="form-floating mb-3">
-								<input type="text" class="form-control" id="eventName" onsubmit="changeCardTitle()">
+								<input type="text" class="form-control" id="eventName">
 								<label for="eventName">Event Name</label>
 							</div>
 							<div class="form-floating mb-3">
@@ -50,7 +50,7 @@
 								</select>
 							</div>
 							<div class="form-floating mb-3 text-center">
-								<button id="createEvent" class="btn btn-success rounded-pill px-3 mt-3 mb-lg-0" type="button" onsubmit="createNewEvent(0);">Create Event</button>
+								<button id="createEvent" class="btn btn-success rounded-pill px-3 mt-3 mb-lg-0" type="button">Create Event</button>
 							</div>
 						</form>
 					</div>
@@ -61,46 +61,5 @@
 </div>
 
 <script>
-
-	let timeline = [];
-	let divNumber = 0;
-	function createNewEvent(divNumber) {
-
-		/* Hide Create Event Button */
-		let submitButton = document.getElementById('createEvent');
-        submitButton.style.display="None";
-
-        /* Get index from div */
-        let prevDivIndex = "collapse"+divNumber;
-        let prevDiv = document.getElementById(prevDivIndex);
-
-        
-        prevDiv.className = 'accordion-collapse collapse';
-        document.getElementById('cardTitle' + divNumber).className = 'accordion-button collapsed';
-        document.getElementById('cardTitle' + divNumber).setAttribute('aria-expanded', false);
-
-        let prevEvent = document.getElementById("newTimeline" + divNumber);
-        let newEvent = prevEvent.cloneNode(prevEvent);
-        newEvent.id = "newTimeline" + (divNumber+1);
-
-        document.getElementById('eventsRow').appendChild(newEvent);
-	}
-
-	function changeCardTitle() {
-		let cardTitle = document.getElementById("cardTitle" + divNumber);
-		let newTitle = document.getElementById('eventName').value;
-		cardTitle.innerHTML = newTitle;
-	}
-
-	function validateForm() {
-		let valid = false;
-		if (valid == false) {
-			changeCardTitle();
-			createNewEvent(0);
-			return false;
-		} else {
-			return true;
-		}
-	}
 </script>
 {% endblock %}
