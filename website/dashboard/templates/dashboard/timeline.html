@@ -48,12 +48,9 @@
 		let collapseDiv = document.getElementById('collapse'+divNumber);
 		collapseDiv.className = 'accordion-button collapsed';
 
-	}
-	document.getElementById('error_1_id_name').style.display="none";
-	document.getElementById('error_1_id_description').style.display="none";
-	document.getElementById('error_1_id_location').style.display="none";
-	document.getElementById('error_1_id_start_date').style.display="none";
-	document.getElementById('error_1_id_end_date').style.display="none";
+		let errorLabels = document.querySelectorAll('.invalid-feedback');
+		errorLabels.forEach(element => element.style.display="none";)
 
-</script>
+	});
+	</script>
 {% endblock %}
