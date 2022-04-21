@@ -45,28 +45,31 @@ def getTP(username):
 #### Authentication functions
 
 # Validate registration data and add user to DB if valid 
-def registerUser(response, accType): 
+def registerUser(response, accType):
     form = ClientRegistrationForm(response.POST)
-    
-    if accType is 'Professional':
+    if accType == 'Professional':
         form = ProfessionalRegistrationForm(response.POST)
-    if accType is 'Third Party':
+    if accType == 'Third Party':
         form = ThirdPartyRegistrationForm(response.POST)
     
-    if form.is_valid():
-        #user = form.save(commit=False) # Create the user object, but don't send it
-        form.save(commit=False) # benji test
-        #user.id = generateID(User)
-        username = response.POST.get('username') # benji test
-        password = response.POST.get('password1') # benji test
-        user = authenticate(username=username, password=password) # benji test
-        if user is not None: # benji test    
-            user.email = user.username
-            user.save() 
-            login(response, user)
-            return redirect('dashboard')
+    if response.method == 'POST':
+        if form.is_valid():
+            #user = form.save(commit=False) # Create the user object, but don't send it
+            form.save(commit=False) # benji test
+            #user.id = generateID(User)
+            username = response.POST.get('username') # benji test
+            password = response.POST.get('password1') # benji test
+            user = authenticate(username=username, password=password) # benji test
+            if user is not None: # benji test    
+                user.email = user.username
+                user.save() 
+                login(response, user)
+                return redirect('/dashboard')
+        else:
+            return HttpResponse(json.dumps({'message': 'Invalid registration data'})) 
     else:
         return HttpResponse(json.dumps({'message': 'Invalid registration data'})) 
+
 
 
 
@@ -81,7 +84,7 @@ def signinUser(response):
         if user is not None:
             # Logic should be implemented to direct user based on their role
             login(response, user)
-            return redirect('dashboard')
+            return redirect('/dashboard')
         else:
             return HttpResponse(json.dumps({'message': message}))
 
@@ -102,7 +105,7 @@ def createTimeline(request, context):
     # POST contains name
     if(Event.objects.filter(timeline=timeline).count() > 0): # Check if timeline has events
         if form.is_valid():
-            ret = redirect('dashboard') # On a sucessful timeline creation, we return to dash instead of return JSON
+            ret = redirect('/dashboard') # On a sucessful timeline creation, we return to dash instead of return JSON
             timeline = form.save(commit=False) 
             timeline.save()
     else:
@@ -159,11 +162,11 @@ def index(response):
     result = render(response, 'main/index.html', context) 
 
     if response.method == 'POST':
-        if response.POST.get('user_select') == 'Client_Select':
+        if response.POST.get('user_select') == 'Client Account':
             accType = 'Client'
-        if response.POST.get('user_select') == 'Professional_Select':
+        if response.POST.get('user_select') == 'Service Professional Account':
             accType = 'Professional'
-        if response.POST.get('user_select') == 'TP_Select':
+        if response.POST.get('user_select') == 'Third Party Account':
             accType = 'Third Party'
 
     """
