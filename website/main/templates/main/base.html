@@ -243,8 +243,8 @@
                             <!-- Submit Button-->
                             <div class="d-grid"><button class="btn btn-primary rounded-pill btn-lg disabled" id="submitButton" type="submit">Submit</button></div>
 						</form> {% endcomment %}
-						{% csrf_token %}
-						{% crispy login_form %}
+						{% comment %} {% csrf_token %}
+						{% crispy login_form %} {% endcomment %}
 					</div>
 				</div>
 			</div>
