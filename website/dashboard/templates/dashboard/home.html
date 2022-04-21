@@ -18,6 +18,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Your Timelines</h6>
                 {% comment %} <h6 class="m-0 font-weight-bold text-primary"></h6> {% endcomment %}
             </div>
+<<<<<<< HEAD
             <div class = 'grid'>
                 <div class="card-body"> 
                     <div class="row no-gutters align-items-center">
@@ -55,6 +56,63 @@
                     </div>
                 </div>
                 <div class = 'row'>
+=======
+            <div class="card-body"> 
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="h5 mb-0 font-weight-bold text-gray-800 text-uppercase">
+                            
+                            Event (complete)</div>
+                        <div class="text-xs font-weight-bold text-success mb-1">Event Description goes here</div>
+                        <div class="text-xs font-weight-bold text-success mb-1">Location</div>
+                    </div>
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="h5 mb-0 font-weight-bold text-gray-800 text-uppercase">
+                            
+                            Event (in progress)</div>
+                        <div class="text-xs font-weight-bold text-success mb-1">Event Description goes here</div>
+                        <div class="text-xs font-weight-bold text-success mb-1">Location</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        <i class="fas fa-solid fa-check fa-2x" style="color:yellow"></i>
+                    </div>
+                </div>
+            </div>
+
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="h5 mb-0 font-weight-bold text-gray-800 text-uppercase">
+                            
+                            Event (upcoming)</div>
+                        <div class="text-xs font-weight-bold text-success mb-1">Event Description goes here</div>
+                        <div class="text-xs font-weight-bold text-success mb-1">Location</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        <i class="fas fa-solid fa-check fa-2x" style="color:gray"></i>
+                    </div>
+                </div>
+            </div>
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="h5 mb-0 font-weight-bold text-gray-800 text-uppercase">
+                            
+                            Event (overdue)</div>
+                        <div class="text-xs font-weight-bold text-success mb-1">Event Description goes here</div>
+                        <div class="text-xs font-weight-bold text-success mb-1">Location</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        <i class="fas fa-solid fa-check fa-2x" style="color:red"></i>
+                    </div>
+                </div>
+            </div>
+
+                
+                {% for i in timeline_list %}
+>>>>>>> bbf1c9fcfed19ae70c94308bca8b96f3ea1087d3
                     <ul>
                     {% include "dashboard/dash-timeline.html" with timeline_name="New Timeline" percentage_complete="20%" valuenow=20 width="width: 20%" color="progress-bar bg-info"%}
                     {% include "dashboard/dash-timeline.html" with timeline_name="In-Progress Timeline" percentage_complete="40%" valuenow=40 width="width: 40%" color="progress-bar bg-warning"%}
