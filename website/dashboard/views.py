@@ -5,6 +5,7 @@ from django.contrib import messages
 # from main.forms import EventCreationForm
 from dashboard.forms import EventCreationForm
 from main.models import *
+from main.views import signoutUser
 
 # Sends user data from timeline event to database
 def updateEvent(request, context):
@@ -47,6 +48,10 @@ def timeline(request):
         'maxEventNumbers': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
     })            
     return result
+
+def signout(request):
+    if request.GET.get('logout') == 'logout':
+        signoutUser(request);
 
 
 '''
