@@ -18,3 +18,32 @@ class EventForm(ModelForm):
         }
         exclude = ['date_created', 'date_last_modified', 'date_completed', 'timeline']
 '''
+class EventCreationForm(ModelForm):
+    class Meta:
+        model = Event
+        fields = ['name', 'description', 'location', 'start_date', 'end_date'] #'file']
+        widgets = {
+            'start_date': DateInput(),
+            'end_date': DateInput(),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Crispy Package Setup
+        self.helper = FormHelper()
+
+        # Set HTTP Request
+        self.form_method = 'POST'
+
+        # Bootstrap 
+        self.helper.layout = Layout(
+            FloatingField('name', css_class='mb-3'),
+            FloatingField('text', 'description', css_class='mb-3'),
+            FloatingField('location', css_class='mb-3'),
+            FloatingField('start_date', css_class='mb_3'),
+            FloatingField('end_date', css_class='mb_3'),
+            Div(
+                Submit('submit', 'register', css_class='btn btn-primary rounded-pill btn-lg', label='Register'),
+                css_class='d-grid'
+            )
+        )
