@@ -64,7 +64,7 @@ def registerUser(response, accType):
                 user.email = user.username
                 user.save() 
                 login(response, user)
-                return redirect('/dashboard')
+                return redirect('index')
         else:
             return HttpResponse(json.dumps({'message': 'Invalid registration data'})) 
     else:
