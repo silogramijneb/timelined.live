@@ -260,6 +260,11 @@
 						{% comment %} <form action="" method="POST"> {% endcomment %}
 							{% load crispy_forms_tags %}
 							{% csrf_token %}
+							<div class = 'd-grid'>
+								<input type="submit" id="client_select" name="Client_Select" class = 'btn btn-primary rounded-pill btn-sm' value = 'Client Account'><br>
+								<input type="submit" id="pro_select" name="Professional_Select" class = 'btn btn-primary rounded-pill btn-sm' value = 'Service Professional Account'><br>
+								<input type="submit" id="tp_select" name="TP_Select" class = 'btn btn-primary rounded-pill btn-sm' value = 'Third Party Account'><br>
+							</div>
 							{% crispy registration_form %}
 							{% comment %} {% crispy pro_registration_form %} {% endcomment %}
 							{% comment %} {% crispy tp_registration_form %}  {% endcomment %}

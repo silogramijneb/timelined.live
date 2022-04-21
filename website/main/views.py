@@ -45,19 +45,20 @@ def getTP(username):
 #### Authentication functions
 
 # Validate registration data and add user to DB if valid 
-def registerUser(response): 
+def registerUser(response, accType): 
     form = ClientRegistrationForm(response.POST)
     if form.is_valid():
         #user = form.save(commit=False) # Create the user object, but don't send it
         form.save(commit=False) # benji test
         #user.id = generateID(User)
-        username = form.cleaned_data.get('username') # benji test
-        raw_password = form.cleaned_data.get('password1') # benji test
-        user = authenticate(username=username, password=raw_password)
-        user.email = user.username
-        user.save() 
-        login(response, user)
-        return redirect('dashboard')
+        username = response.POST.get('username') # benji test
+        password = response.POST.get('password1') # benji test
+        user = authenticate(username=username, password=password) # benji test
+        if user is not None: # benji test    
+            user.email = user.username
+            user.save() 
+            login(response, user)
+            return redirect('dashboard')
     else:
         return HttpResponse(json.dumps({'message': 'Invalid registration data'})) 
 
@@ -141,13 +142,23 @@ def createEvent(request, context):
 ### Define more functions for queries (Not sure if this is the right file for this)
 
 def index(response):
+    accType = ''
+
     # Defult context for our page
-    
+    context = {}
     #Load Registration Forms 
     context = {'registration_form': ClientRegistrationForm()}
     
     # Render defult page with updated context
     result = render(response, 'main/index.html', context) 
+
+    if response.method == 'POST':
+        if response.POST.get('user_select') == 'Client_Select':
+            accType = 'Client'
+        if response.POST.get('user_select') == 'Professional_Select':
+            accType = 'Professional'
+        if response.POST.get('user_select') == 'TP_Select':
+            accType = 'Third Party'
 
     """
     # POST: Update Context
@@ -172,7 +183,7 @@ def index(response):
     if response.method == 'POST':
         # On registration submission attempt to create user
         if response.POST.get('submit') == 'register':
-            result = registerUser(response)
+            result = registerUser(response, accType)
         # On signin submission attempt to signin user
         if response.POST.get('submit') == 'login':
             result = signinUser(response)
