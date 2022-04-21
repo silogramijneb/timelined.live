@@ -30,7 +30,7 @@ def dashboard(response):
 def timeline(request):
     
     context = {}
-    context.update({"form": EventCreationForm()})
+    context.update({"form": EventCreationForm(request.POST)})
     
     # POST: Update context
     if request.method == "POST":
