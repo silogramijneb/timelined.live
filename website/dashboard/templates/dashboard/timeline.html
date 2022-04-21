@@ -25,7 +25,7 @@
 							{% csrf_token %}
 							{% crispy form %}
 							<div class="form-group text-center mt-3">
-									<button class="btn btn-success rounded-pill" type="button" id="createEventButton" >New Event</button>
+								<button class="btn btn-success rounded-pill" type="button" onclick="createEvent()" id="createEventButton" >New Event</button>
 							</div>
 						</div>
 					</div>
@@ -45,17 +45,19 @@
 		errorLabels.forEach(function(tag) { tag.style.display="none" });
 	});
 
-	let buttons = document.querySelectorAll('createEventButton');
-	buttons.forEach(function(button) {
-		divNumber = parseInt(document.getElementById('createEventButton').value);
+	function createEvent() {
+		let button = document.getElementById('createEventButton');
+		divNumber = parseInt(button.value);
+		
 		button.addEventListener("click", function() {
 			let thisDiv = document.getElementById('newTimeline'+divNumber);
 			let nextDiv = document.getElementById('newTimeline'+(divNumber+1));
 
 			nextDiv.className = 'accordion pb-2';
 			nextDiv.scrollIntoView();
-		});
-	});
+		})
+	}
+
 
 </script>
 {% endblock %}
