@@ -37,7 +37,7 @@ class UserSelectionForm(forms.Form):
 class ClientRegistrationForm(UserCreationForm):
     class Meta:
         model = Client
-        fields = ['first_name', 'last_name',    'username', 'phone', 'password1', 'password2']
+        fields = ['first_name', 'last_name', 'username', 'phone', 'password1', 'password2']
         labels = {
             'first_name': 'First Name',
             'last_name' : 'Last Name',
@@ -156,6 +156,29 @@ class ThirdPartyRegistrationForm(UserCreationForm):
         self.fields['password2'].label = 'Password Confirmation'
         self.fields['third_party_name'].label = 'Third Party Name'
 
+class LoginForm(forms.Form):
+    email = forms.EmailField(label='Email Address')
+    password = forms.CharField(label='Password')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Crispy Package Setup
+        self.helper = FormHelper()
+
+        # Set HTTP Request
+        self.form_method = 'POST'
+    
+        # Bootstrap 
+        self.helper.layout = Layout(
+            FloatingField('email', css_class='mb-3'),
+            FloatingField('password', css_class='mb-3'),
+            Div(
+                Submit('submit', 'login', css_class='btn btn-primary rounded-pill btn-lg', label='Login'),
+                css_class='d-grid'
+            )
+        ) 
+    
+    
 
 class TimelineCreationForm(ModelForm):
     class Meta:
@@ -209,14 +232,9 @@ class EventCreationForm(ModelForm):
             FloatingField('location', css_class='mb-3'),
             FloatingField('start_date', css_class='mb_3'),
             FloatingField('end_date', css_class='mb_3'),
-            Div(
+            #FloatingField('file', css_class='mb-3'),
+            '''Div(
                 Submit('submit', 'register', css_class='btn btn-primary rounded-pill btn-lg', label='Register'),
                 css_class='d-grid'
-            )
+            )'''
         )
-
-
-
-
-
-

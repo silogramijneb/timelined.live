@@ -198,7 +198,7 @@
 		</div>
 
 		<!-- MODALS -->
-
+		{% load crispy_forms_tags %} 
 		<!-- Login Modal -->
 		<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered">
@@ -208,7 +208,7 @@
 						<button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-body border-0 p-4">
-						<form id="loginForm">
+						{% comment %} <form id="loginForm">
                             <!-- Email address input-->
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
@@ -242,7 +242,9 @@
                             <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                             <!-- Submit Button-->
                             <div class="d-grid"><button class="btn btn-primary rounded-pill btn-lg disabled" id="submitButton" type="submit">Submit</button></div>
-						</form>
+						</form> {% endcomment %}
+						{% csrf_token %}
+						{% crispy login_form %}
 					</div>
 				</div>
 			</div>
@@ -258,7 +260,6 @@
 					</div>
 					<div class="modal-body border-0 p-4">
 						{% comment %} <form action="" method="POST"> {% endcomment %}
-							{% load crispy_forms_tags %}
 							{% csrf_token %}
 							{% crispy registration_form %}
 							{% comment %} {% crispy pro_registration_form %} {% endcomment %}
