@@ -225,7 +225,6 @@
 							{% load crispy_forms_tags %}
 							{% csrf_token %}
 							<div class = 'row'>
-<<<<<<< HEAD
 								<div class="col">
 									<input type="submit" id="client_select" name="user_select" class = 'btn btn-primary rounded-pill btn-sm' value = 'Account'>
 								</div>
@@ -235,11 +234,6 @@
 								<div class="col">
 									<input type="submit" id="tp_select" name="user_select" class = 'btn btn-primary rounded-pill btn-sm' value = 'Third Party'>
 								</div>
-=======
-								<input class="col" type="submit" id="client_select" name="user_select" class = 'btn btn-primary rounded-pill btn-sm' value = 'Client'><br>
-								<input class="col" type="submit" id="pro_select" name="user_select" class = 'btn btn-primary rounded-pill btn-sm' value = 'Professional'><br>
-								<input class="col" type="submit" id="tp_select" name="user_select" class = 'btn btn-primary rounded-pill btn-sm' value = 'Third Party'><br>
->>>>>>> 22db7c4967059a9389565c5f6935c789c8ec7c39
 							</div>
 							{% crispy registration_form %}
 							{% comment %} {% crispy pro_registration_form %} {% endcomment %}
