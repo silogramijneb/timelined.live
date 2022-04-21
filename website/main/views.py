@@ -57,8 +57,6 @@ def registerUser(response):
         return HttpResponse(json.dumps({'message': 'Invalid registration data'})) 
 
 
-
-
 # Validate attempted user signin. Will redirect if valid
 def signinUser(response):
         username = response.POST.get('username')
@@ -70,7 +68,7 @@ def signinUser(response):
         if user is not None:
             # Logic should be implemented to direct user based on their role
             login(response, user)
-            return redirect('/dashboard')
+            return redirect('dashboard')
         else:
             return HttpResponse(json.dumps({'message': message}))
 
@@ -91,7 +89,7 @@ def createTimeline(request, context):
     # POST contains name
     if(Event.objects.filter(timeline=timeline).count() > 0): # Check if timeline has events
         if form.is_valid():
-            ret = redirect('/dashboard') # On a sucessful timeline creation, we return to dash instead of return JSON
+            ret = redirect('dashboard') # On a sucessful timeline creation, we return to dash instead of return JSON
             timeline = form.save(commit=False) 
             timeline.save()
     else:
@@ -137,22 +135,17 @@ def createEvent(request, context):
 ### Define more functions for queries (Not sure if this is the right file for this)
 
 def index(response):
+<<<<<<< HEAD
+=======
 
+>>>>>>> b07e9b6880131c66f7dd4025b5bee934c0892324
     # Defult context for our page
-    context = {}
+    
     #Load Registration Forms 
     context = {'registration_form': ClientRegistrationForm()}
     
     # Render defult page with updated context
     result = render(response, 'main/index.html', context) 
-
-    # if response.method == 'POST':
-    #     if response.POST.get('user_select') == 'Client Account':
-    #         accType = 'Client'
-    #     if response.POST.get('user_select') == 'Service Professional Account':
-    #         accType = 'Professional'
-    #     if response.POST.get('user_select') == 'Third Party Account':
-    #         accType = 'Third Party'
 
     """
     # POST: Update Context
@@ -177,7 +170,6 @@ def index(response):
     if response.method == 'POST':
         # On registration submission attempt to create user
         if response.POST.get('submit') == 'register':
-            #result = registerUser(response, accType)
             result = registerUser(response)
         # On signin submission attempt to signin user
         if response.POST.get('submit') == 'login':
