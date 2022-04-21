@@ -25,7 +25,7 @@
 							{% csrf_token %}
 							{% crispy form %}
 							<div class="form-group text-center mt-3">
-									<button class="btn btn-success rounded-pill" type="button" onclick="createEvent({{i}})">New Event</button>
+									<button class="btn btn-success rounded-pill" type="button" id="createEventButton" >New Event</button>
 							</div>
 						</div>
 					</div>
@@ -38,19 +38,22 @@
 
 <script>
 	let timeline = [];
-	
-	function createEvent(divNumber) {
-		divNumber = parseInt(divNumber);
+	let divNumber = 0;
+
+	document.getElementById('createEventButton').addEventListener("click", function () {
 		let thisDiv = document.getElementById('newTimeline'+divNumber);
 		let nextDiv = document.getElementById('newTimeline'+(divNumber+1));
 		
-		/* Collapse previous div, show next div expanded */
 		nextDiv.className = 'accordion pb-2';
 		let collapseDiv = document.getElementById('collapse'+divNumber);
-		collapseDiv.className = 'accordion-collapse collapse";
-		let collapseDiv = document.getElementById('cardTitle'+divNumber);
 		collapseDiv.className = 'accordion-button collapsed';
-		collapseDiv.aria.expanded = "false";
+
 	}
+	document.getElementById('error_1_id_name').style.display="none";
+	document.getElementById('error_1_id_description').style.display="none";
+	document.getElementById('error_1_id_location').style.display="none";
+	document.getElementById('error_1_id_start_date').style.display="none";
+	document.getElementById('error_1_id_end_date').style.display="none";
+
 </script>
 {% endblock %}
