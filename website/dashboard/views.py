@@ -58,7 +58,7 @@ def timeline(request):
             
         context = {
             "form": form,
-            "index": 0,
+            "index": '0',
         }
         return render(request, "dashboard/timeline.html", context)
 
