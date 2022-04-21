@@ -5,6 +5,7 @@ from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit
 from crispy_bootstrap5.bootstrap5 import *
 
 from .models import TimelineEvent
+from main.models import Event
 
 '''
 class EventForm(ModelForm):
@@ -23,8 +24,8 @@ class EventCreationForm(ModelForm):
         model = Event
         fields = ['name', 'description', 'location', 'start_date', 'end_date'] #'file']
         widgets = {
-            'start_date': DateInput(),
-            'end_date': DateInput(),
+            'start_date': forms.DateInput(),
+            'end_date': forms.DateInput(),
         }
 
     def __init__(self, *args, **kwargs):
@@ -42,8 +43,4 @@ class EventCreationForm(ModelForm):
             FloatingField('location', css_class='mb-3'),
             FloatingField('start_date', css_class='mb_3'),
             FloatingField('end_date', css_class='mb_3'),
-            Div(
-                Submit('submit', 'register', css_class='btn btn-primary rounded-pill btn-lg', label='Register'),
-                css_class='d-grid'
-            )
         )
