@@ -45,9 +45,8 @@ def getTP(username):
 #### Authentication functions
 
 # Validate registration data and add user to DB if valid 
-def registerUser(response, accType): 
+def registerUser(response, accType):
     form = ClientRegistrationForm(response.POST)
-    
     if accType is 'Professional':
         form = ProfessionalRegistrationForm(response.POST)
     if accType is 'Third Party':
