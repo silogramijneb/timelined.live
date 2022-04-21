@@ -82,11 +82,8 @@
 		let prevEvent = document.getElementById("newTimeline" + divNumber);
 		let newEvent = prevEvent.cloneNode(prevEvent);
 		newEvent.id = "newTimeline" + (divNumber+1);
-		let childs = newEvent.childNodes;
-		console.log(childs);
 
 		document.getElementById('eventsRow').appendChild(newEvent);
-		divNumber++;
 	}
 
 	function changeCardTitle() {
@@ -99,7 +96,7 @@
 		let valid = false;
 		if (valid == false) {
 			changeCardTitle();
-			createNewEvent(0);
+			createNewEvent(divNumber);
 			return false;
 		} else {
 			return true;
