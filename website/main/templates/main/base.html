@@ -147,23 +147,6 @@
 		Pittsburgh, PA 2022
 	-->
 	<body id="page-top">
-		<!--
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<div class="container-fluid">
-				<a class="navbar-brand nav-hero" href="/">timelined.live</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="navbar-nav position-relative">
-					<a class="nav-link end-0" href="#">Features</a>
-					<a class="nav-link end-0" href="#">About</a>
-					<a class="nav-link end-0" href="#">Contact</a>
-					<button class="btn btn-success" type="button">Login</button>
-				</div>
-			</div>
-		</nav>
-		-->
-
 		<!-- NAVIGATION -->
 		<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm" id="mainNav">
 			<div class="container px-5">
@@ -223,25 +206,6 @@
                                 <div class="invalid-feedback" data-sb-feedback="password:required">A password is required.</div>
                             </div>
 							<a href="#signUpModal" class="nav-link text-center mb-3">Don't have an account? Sign up here</a>
-							<!-- Submit success message-->
-                            <!---->
-                            <!-- This is what your users will see when the form-->
-                            <!-- has successfully submitted-->
-                            <div class="d-none" id="submitSuccessMessage">
-                                <div class="text-center mb-3">
-                                    <div class="fw-bolder">Form submission successful!</div>
-                                    To activate this form, sign up at
-                                    <br />
-                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                </div>
-                            </div>
-                            <!-- Submit error message-->
-                            <!---->
-                            <!-- This is what your users will see when there is-->
-                            <!-- an error submitting the form-->
-                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                            <!-- Submit Button-->
-                            <div class="d-grid"><button class="btn btn-primary rounded-pill btn-lg disabled" id="submitButton" type="submit">Submit</button></div>
 						</form>
 					</div>
 				</div>
@@ -261,6 +225,7 @@
 							{% load crispy_forms_tags %}
 							{% csrf_token %}
 							<div class = 'row'>
+<<<<<<< HEAD
 								<div class="col">
 									<input type="submit" id="client_select" name="user_select" class = 'btn btn-primary rounded-pill btn-sm' value = 'Account'>
 								</div>
@@ -270,6 +235,11 @@
 								<div class="col">
 									<input type="submit" id="tp_select" name="user_select" class = 'btn btn-primary rounded-pill btn-sm' value = 'Third Party'>
 								</div>
+=======
+								<input class="col" type="submit" id="client_select" name="user_select" class = 'btn btn-primary rounded-pill btn-sm' value = 'Client'><br>
+								<input class="col" type="submit" id="pro_select" name="user_select" class = 'btn btn-primary rounded-pill btn-sm' value = 'Professional'><br>
+								<input class="col" type="submit" id="tp_select" name="user_select" class = 'btn btn-primary rounded-pill btn-sm' value = 'Third Party'><br>
+>>>>>>> 22db7c4967059a9389565c5f6935c789c8ec7c39
 							</div>
 							{% crispy registration_form %}
 							{% comment %} {% crispy pro_registration_form %} {% endcomment %}
