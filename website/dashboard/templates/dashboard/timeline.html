@@ -82,10 +82,10 @@
 		let prevEvent = document.getElementById("newTimeline" + divNumber);
 		let newEvent = prevEvent.cloneNode(prevEvent);
 		newEvent.id = "newTimeline" + (divNumber+1);
-		newEvent.querySelector('input').innerHTML = "";
-		prevEvent.appendChild(newEvent);
+		console.log(newEvent);
 
 		document.getElementById('eventsRow').appendChild(newEvent);
+		divNumber++;
 	}
 
 	function changeCardTitle() {
