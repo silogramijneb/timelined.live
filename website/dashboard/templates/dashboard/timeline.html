@@ -67,6 +67,8 @@
 	window.addEventListener('load', function() {
 		let errorLabels = document.querySelectorAll('.invalid-feedback');
 		errorLabels.forEach(function(tag) { tag.style.display="none" });
+		let formControls = document.querySelectorAll('input');
+		formControls.forEach(function(input) { input.style.border="2px solid #B0C4DE" });
 	});
 
 </script>
