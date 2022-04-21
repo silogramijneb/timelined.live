@@ -18,17 +18,55 @@
                 <h6 class="m-0 font-weight-bold text-primary">Your Timelines</h6>
                 {% comment %} <h6 class="m-0 font-weight-bold text-primary"></h6> {% endcomment %}
             </div>
-            <div class="card-body"> 
-                {% for i in timeline_list %}
+            <div class = 'grid'>
+                <div class="card-body"> 
+                    <div class="row no-gutters align-items-center">
+                        
+                            <div class="col mr-2">
+                                <div class = "card px-5 py-2">
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800 text-uppercase py-1">Event (UPCOMING)</div>
+                                    <div class="text-xs font-weight-bold text-success mb-1 py-1">Event Description goes here</div>
+                                    <div class="text-xs font-weight-bold text-success mb-1">Location</div>
+                                </div>
+                            </div>
+                            <div class="col mr-2">
+                                <div class = "card px-5 py-2">
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800 text-uppercase py-1">Event (COMPLETE)</div>
+                                    <div class="text-xs font-weight-bold text-success mb-1 py-1">Event Description goes here</div>
+                                    <div class="text-xs font-weight-bold text-success mb-1">Location</div>
+                                </div>
+                            </div>
+                            <div class="col mr-2">
+                                <div class = "card px-5 py-2">
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800 text-uppercase py-1">Event (OVERDUE)</div>
+                                    <div class="text-xs font-weight-bold text-success mb-1 py-1">Event Description goes here</div>
+                                    <div class="text-xs font-weight-bold text-success mb-1">Location</div>
+                                </div>
+                            </div>
+                            <div class="col mr-2">
+                                <div class = "card px-5 py-2">
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800 text-uppercase py-1">Event (UNSCHEDULED)</div>
+                                    <div class="text-xs font-weight-bold text-success mb-1 py-1">Event Description goes here</div>
+                                    <div class="text-xs font-weight-bold text-success mb-1">Location</div>
+                                </div>
+                            </div>
+                        
+
+                    </div>
+                </div>
+                <div class = 'row'>
                     <ul>
-                        {% include "dashboard/dash-timeline.html" with timeline_name="Test Timeline" percentage_complete="100%" valuenow=100 width="width: 100%" %}
+                    {% include "dashboard/dash-timeline.html" with timeline_name="New Timeline" percentage_complete="20%" valuenow=20 width="width: 20%" color="progress-bar bg-info"%}
+                    {% include "dashboard/dash-timeline.html" with timeline_name="In-Progress Timeline" percentage_complete="40%" valuenow=40 width="width: 40%" color="progress-bar bg-warning"%}
+                    {% include "dashboard/dash-timeline.html" with timeline_name="Overdue Timeline" percentage_complete="60%" valuenow=60 width="width: 60%" color="progress-bar bg-danger"%}
+                    {% include "dashboard/dash-timeline.html" with timeline_name="Near Complete Timline" percentage_complete="80%" valuenow=80 width="width: 80%" color="progress-bar bg-success"%}
+                    {% include "dashboard/dash-timeline.html" with timeline_name="Complete Timeline!" percentage_complete="100%" valuenow=100 width="width: 100%" color="progress-bar bg-success"%}
                     </ul>
-                {% endfor %}
-            </div>
-                
+                </div>
         </div>
     </div>
-    <!-- Content Row -->
+    
+    Timeline Managment Statistics
     <div class="row">
 
         <!-- Area Chart -->
@@ -105,7 +143,7 @@
         </div>
     </div>
 
-    
+     
 </div>
 {% endblock %}
                 

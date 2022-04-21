@@ -25,13 +25,12 @@
 							{% csrf_token %}
 							{% crispy form %}
 							<div class="form-group text-center mt-3">
-								<button class="btn btn-success rounded-pill" type="button" onclick="createEvent({{i}})" id="createEventButton" >New Event</button>
+									<button class="btn btn-success rounded-pill" type="button" id="createEventButton" onclick="changeEvent({{i}})">New Event</button>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			
 		{% endfor %}
 	</div>
 </div>
@@ -40,24 +39,27 @@
 	let timeline = [];
 	let divNumber = 0;
 
+	function changeEvent(divNumber) {
+		console.log(divNumber);
+		let currDiv = document.getElementById('newTimeline'+divNumber);
+		let nextDiv = document.getElementById('newTimeline'+(divNumber+1));
+
+		let collapsePrevDiv = document.getElementById('cardTitle'+divNumber);
+		collapsePrevDiv.className = 'accordion-button collapsed';
+		collapsePrevDiv.setAttribute('aria-expanded', 'false');
+		
+		collapsePrevDiv = document.getElementById('collapse'+divNumber);
+		collapsePrevDiv.className = 'accordion-collapse collapse';
+
+		nextDiv.className = 'accordion pb-2';
+		nextDiv.scrollIntoView();
+		divNumber++;
+	}
+
 	window.addEventListener('load', function() {
 		let errorLabels = document.querySelectorAll('.invalid-feedback');
 		errorLabels.forEach(function(tag) { tag.style.display="none" });
 	});
-
-	function createEvent(divNumber) {
-		let button = document.getElementById('createEventButton');
-		divNumber = parseInt(button.value);
-
-		button.addEventListener("click", function() {
-			let thisDiv = document.getElementById('newTimeline'+divNumber);
-			let nextDiv = document.getElementById('newTimeline'+(divNumber+1));
-
-			nextDiv.className = 'accordion pb-2';
-			nextDiv.scrollIntoView();
-		})
-	}
-
 
 </script>
 {% endblock %}
