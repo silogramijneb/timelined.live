@@ -46,29 +46,29 @@ def getTP(username):
 
 # Validate registration data and add user to DB if valid 
 def registerUser(response, accType):
-    form = ClientRegistrationForm(response.POST)
-    if accType == 'Professional':
-        form = ProfessionalRegistrationForm(response.POST)
-    if accType == 'Third Party':
-        form = ThirdPartyRegistrationForm(response.POST)
+    # form = ClientRegistrationForm(response.POST)
+    # if accType == 'Professional':
+    #     form = ProfessionalRegistrationForm(response.POST)
+    # if accType == 'Third Party':
+    #     form = ThirdPartyRegistrationForm(response.POST)
     
-    if response.method == 'POST':
-        if form.is_valid():
-            #user = form.save(commit=False) # Create the user object, but don't send it
-            form.save(commit=False) # benji test
-            #user.id = generateID(User)
-            username = response.POST.get('username') # benji test
-            password = response.POST.get('password1') # benji test
-            user = authenticate(username=username, password=password) # benji test
-            if user is not None: # benji test    
-                user.email = user.username
-                user.save() 
-                login(response, user)
-                return redirect('index')
-        else:
-            return HttpResponse(json.dumps({'message': 'Invalid registration data'})) 
+    #if response.method == 'POST':
+    if form.is_valid():
+        #user = form.save(commit=False) # Create the user object, but don't send it
+        form.save(commit=False) # benji test
+        #user.id = generateID(User)
+        username = response.POST.get('username') # benji test
+        password = response.POST.get('password1') # benji test
+        user = authenticate(username=username, password=password) # benji test
+        if user is not None: # benji test    
+            user.email = user.username
+            user.save() 
+            login(response, user)
+            return redirect('index')
     else:
         return HttpResponse(json.dumps({'message': 'Invalid registration data'})) 
+    #else:
+    #    return HttpResponse(json.dumps({'message': 'Invalid registration data'})) 
 
 
 
@@ -161,13 +161,13 @@ def index(response):
     # Render defult page with updated context
     result = render(response, 'main/index.html', context) 
 
-    if response.method == 'POST':
-        if response.POST.get('user_select') == 'Client Account':
-            accType = 'Client'
-        if response.POST.get('user_select') == 'Service Professional Account':
-            accType = 'Professional'
-        if response.POST.get('user_select') == 'Third Party Account':
-            accType = 'Third Party'
+    # if response.method == 'POST':
+    #     if response.POST.get('user_select') == 'Client Account':
+    #         accType = 'Client'
+    #     if response.POST.get('user_select') == 'Service Professional Account':
+    #         accType = 'Professional'
+    #     if response.POST.get('user_select') == 'Third Party Account':
+    #         accType = 'Third Party'
 
     """
     # POST: Update Context
@@ -198,7 +198,7 @@ def index(response):
             result = signinUser(response)
 
     # Refresh Page, Redirect Page, or provide a JSON containing an error message
-    return render(response, 'main/index.html', context) 
+    return result
 
 
 
