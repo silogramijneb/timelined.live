@@ -45,30 +45,16 @@ def getTP(username):
 #### Authentication functions
 
 # Validate registration data and add user to DB if valid 
-def registerUser(response, accType):
+def registerUser(response):
     form = ClientRegistrationForm(response.POST)
-    # if accType == 'Professional':
-    #     form = ProfessionalRegistrationForm(response.POST)
-    # if accType == 'Third Party':
-    #     form = ThirdPartyRegistrationForm(response.POST)
-    
-    #if response.method == 'POST':
     if form.is_valid():
         user = form.save(commit=False) # Create the user object, but don't send it
-        # form.save(commit=False) # benji test
-        #user.id = generateID(User)
-        # username = response.POST.get('username') # benji test
-        # password = response.POST.get('password1') # benji test
-        # user = authenticate(username=username, password=password) # benji test
-        # if user is not None: # benji test    
         user.email = user.username
         user.save() 
         login(response, user)
-        return redirect('index')
+        return redirect('dashboard')
     else:
         return HttpResponse(json.dumps({'message': 'Invalid registration data'})) 
-    #else:
-    #    return HttpResponse(json.dumps({'message': 'Invalid registration data'})) 
 
 
 
