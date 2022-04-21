@@ -45,7 +45,7 @@ def getTP(username):
 #### Authentication functions
 
 # Validate registration data and add user to DB if valid 
-def registerUser(response): 
+def registerUser(response, accType): 
     form = ClientRegistrationForm(response.POST)
     if form.is_valid():
         #user = form.save(commit=False) # Create the user object, but don't send it
@@ -141,13 +141,23 @@ def createEvent(request, context):
 ### Define more functions for queries (Not sure if this is the right file for this)
 
 def index(response):
+    accType = ''
+
     # Defult context for our page
-    
+    context = {}
     #Load Registration Forms 
-    context = {'registration_form': UserSelectionForm()}
+    context = {'registration_form': ClientRegistrationForm()}
     
     # Render defult page with updated context
     result = render(response, 'main/index.html', context) 
+
+    if response.method == 'POST':
+        if response.POST.get('user_select') == 'Client_Select':
+            accType = 'Client'
+        if response.POST.get('user_select') == 'Professional_Select':
+            accType = 'Professional'
+        if response.POST.get('user_select') == 'TP_Select':
+            accType = 'Third Party'
 
     """
     # POST: Update Context
@@ -172,7 +182,7 @@ def index(response):
     if response.method == 'POST':
         # On registration submission attempt to create user
         if response.POST.get('submit') == 'register':
-            result = registerUser(response)
+            result = registerUser(response, accType)
         # On signin submission attempt to signin user
         if response.POST.get('submit') == 'login':
             result = signinUser(response)
