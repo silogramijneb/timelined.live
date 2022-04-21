@@ -64,7 +64,7 @@ def registerUser(response, accType):
                 user.email = user.username
                 user.save() 
                 login(response, user)
-                return redirect('dashboard')
+                return redirect('/dashboard')
         else:
             return HttpResponse(json.dumps({'message': 'Invalid registration data'})) 
     else:
@@ -84,7 +84,7 @@ def signinUser(response):
         if user is not None:
             # Logic should be implemented to direct user based on their role
             login(response, user)
-            return redirect('dashboard')
+            return redirect('/dashboard')
         else:
             return HttpResponse(json.dumps({'message': message}))
 
@@ -105,7 +105,7 @@ def createTimeline(request, context):
     # POST contains name
     if(Event.objects.filter(timeline=timeline).count() > 0): # Check if timeline has events
         if form.is_valid():
-            ret = redirect('dashboard') # On a sucessful timeline creation, we return to dash instead of return JSON
+            ret = redirect('/dashboard') # On a sucessful timeline creation, we return to dash instead of return JSON
             timeline = form.save(commit=False) 
             timeline.save()
     else:
