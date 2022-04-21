@@ -82,7 +82,8 @@
 		let prevEvent = document.getElementById("newTimeline" + divNumber);
 		let newEvent = prevEvent.cloneNode(prevEvent);
 		newEvent.id = "newTimeline" + (divNumber+1);
-		console.log(newEvent);
+		let childs = newEvent.childNodes;
+		console.log(childs);
 
 		document.getElementById('eventsRow').appendChild(newEvent);
 		divNumber++;
