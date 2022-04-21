@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib import messages
 
-from main.forms import EventCreationForm
+# from main.forms import EventCreationForm
+from dashboard.forms import EventCreationForm
 from main.models import *
 
 # Sends user data from timeline event to database
