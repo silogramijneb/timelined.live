@@ -55,8 +55,8 @@ def timeline(request):
             form.save()
             event_title = form.cleaned_data.get('title')
             messages.success(request, f'{event_title} created!')
-    
-        context['form'] = form
+            
+        context["form"] = form
         return render(request, "dashboard/timeline.html", context)
 
 def events():

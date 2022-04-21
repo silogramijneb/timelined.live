@@ -12,9 +12,9 @@
 		<div class="accordion pb-2" id="newTimeline0">
 			<div class="accordion-item event-accordion" id="evAccordian0">
 				<h2 class="accordion-header" id="eventNameAccordion0">
-					<button id="cardTitle0" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse0" aria-expanded="true" aria-controls="collapse0">New Event</button>
+					<button id="cardTitle0" class="accordion-button" type="button" data-bs-toggle="collapse0" data-bs-target="#collapse0" aria-expanded="true" aria-controls="collapse0">New Event</button>
 				</h2>
-				<div id="collapse0" class="accordion-collapse collapse show" aria-labelledby="heading0" data-bs-parent="#newTimeline">
+				<div id="collapse0" class="accordion-collapse collapse show" aria-labelledby="heading" data-bs-parent="#newTimeline">
 					<div class="accordion-body">
 						<form onsubmit="event.preventDefault(); validateForm();" id="timeline-event">
 							<div class="form-group mt-3 mb-3">
@@ -65,19 +65,10 @@
 	let timeline = [];
 	let divNumber = 0;
 	function createNewEvent(divNumber) {
-		let submitButton = document.getElementById('createEvent');
-		submitButton.style.display="None";
-		let prevDivIndex = "collapse"+divNumber;
-		let prevDiv = document.getElementById(prevDivIndex);
-		prevDiv.className = 'accordion-collapse collapse';
-		document.getElementById('cardTitle' + divNumber).className = 'accordion-button collapsed';
-		document.getElementById('cardTitle' + divNumber).setAttribute('aria-expanded', false);
-		let prevEvent = document.getElementById("newTimeline" + divNumber);
-		let newEvent = prevEvent.cloneNode(prevEvent);
-		newEvent.id = "newTimeline" + (divNumber+1);
-		prevEvent.appendChild(newEvent);
 
-		document.getElementById('eventsRow').appendChild(newEvent);
+		document.getElementById('createEvent').style.display="none";
+		let currentDiv = document.getElementById('newTimeline'+divNumber);
+		console.log(currentDiv);
 	}
 
 	function changeCardTitle() {
