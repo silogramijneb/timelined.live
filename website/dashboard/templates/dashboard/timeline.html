@@ -31,81 +31,20 @@
 			</div>
 			
 		{% endfor %}
-		<!--
-		<div class="accordion pb-2" id="newTimeline1">
-			<div class="accordion-item event-accordion" id="evAccordian1">
-				<h2 class="accordion-header" id="eventNameAccordion1">
-					<button id="cardTitle1" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">New Event</button>
-				</h2>
-				<div id="collapse1" class="accordion-collapse collapse" aria-labelledby="heading" data-bs-parent="#newTimeline">
-					<div class="accordion-body">
-						{% load crispy_forms_tags %}
-                        {% csrf_token %}
-                        {% crispy form %}
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="accordion pb-2" id="newTimeline2">
-			<div class="accordion-item event-accordion" id="evAccordian2">
-				<h2 class="accordion-header" id="eventNameAccordion2">
-					<button id="cardTitle2" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">New Event</button>
-				</h2>
-				<div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading" data-bs-parent="#newTimeline">
-					<div class="accordion-body">
-						{% load crispy_forms_tags %}
-                        {% csrf_token %}
-                        {% crispy form %}
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="accordion pb-2" id="newTimeline3">
-			<div class="accordion-item event-accordion" id="evAccordian3">
-				<h2 class="accordion-header" id="eventNameAccordion3">
-					<button id="cardTitle3" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">New Event</button>
-				</h2>
-				<div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading" data-bs-parent="#newTimeline">
-					<div class="accordion-body">
-						{% load crispy_forms_tags %}
-                        {% csrf_token %}
-                        {% crispy form %}
-					</div>
-				</div>
-			</div>
-		</div>
-	-->
 	</div>
 </div>
 
 <script>
 	let timeline = [];
-	function createNewEvent(divNumber) {
-		let submitButton = document.getElementById('createEvent');
-		submitButton.style.display="None";
-		let prevDivIndex = "collapse"+divNumber;
-		let prevDiv = document.getElementById(prevDivIndex);
-		prevDiv.className = 'accordion-collapse collapse';
-		document.getElementById('cardTitle').className = 'accordion-button collapsed';
-		let newDiv = prevDiv.cloneNodes(prevDiv);
-		document.getElementById('eventRow').appendChild(newDiv);
-	}
-
-	function changeCardTitle() {
-		let cardTitle = document.getElementById('cardTitle');
-		let newTitle = document.getElementById('eventName').value;
-		cardTitle.innerHTML = newTitle;
-	}
-
-	function validateForm() {
-		let valid = false;
-		if (valid == false) {
-			changeCardTitle();
-			createNewEvent();
-			return false;
-		} else {
-			return true;
-		}
+	
+	function createEvent(divNumber) {
+		let thisDiv = document.getElementById('newTimeline'+divNumber);
+		let nextDiv = document.getElementById('newTimeline'+(divNumber+1));
+		
+		/* Collapse previous div, show next div expanded */
+		nextDiv.className = 'accordion pb-2';
+		let collapseDiv = document.getElementById('cardTitle'+divNumber);
+		collapseDiv.data.bs.toggle="collapse";
 	}
 </script>
 {% endblock %}
