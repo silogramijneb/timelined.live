@@ -5,21 +5,20 @@ from django.contrib import messages
 from main.forms import EventCreationForm
 from main.models import *
 
-'''
 # Sends user data from timeline event to database
 def updateEvent(request, context):
-    form = EventForm(request.POST)
+    form = EventCreationForm(request.POST)
     if form.is_valid():
         event = form.save(commit=False)
         event.save()
-    context.update({"event_form": form})
+    context.update({"form": form})
 
 def createEvent(request, context):
-    form = EventForm(request.POST) if form.is_valid():
+    form = EventCreationForm(request.POST) 
+    if form.is_valid():
         event = form.save(commit=False)
         event.save()
-    context.update({"event_form": form})
-'''
+    context.update({"form": form})
 
 # Create your views here.
 def dashboard(response):
@@ -27,11 +26,11 @@ def dashboard(response):
                 'teststring' : "CONTEXT WAS PASSED"}
     return render(response, "dashboard/home.html", context)
 
-'''
+
 def timeline(request):
     
     context = {}
-    context.update({"event_form": EventForm()})
+    context.update({"form": EventCreationForm()})
     
     # POST: Update context
     if request.method == "POST":
@@ -45,8 +44,9 @@ def timeline(request):
             
     result = render(request, "dashboard/timeline.html", context)            
     return result
-'''
 
+
+'''
 def timeline(request):
     context = {}
     if request.method == "POST":
@@ -58,6 +58,7 @@ def timeline(request):
             
         context["form"] = form
         return render(request, "dashboard/timeline.html", context)
+'''
 
 def events():
     return render("dashboard/events.html")
