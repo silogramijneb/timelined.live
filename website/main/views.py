@@ -135,10 +135,6 @@ def createEvent(request, context):
 ### Define more functions for queries (Not sure if this is the right file for this)
 
 def index(response):
-<<<<<<< HEAD
-=======
-
->>>>>>> b07e9b6880131c66f7dd4025b5bee934c0892324
     # Defult context for our page
     
     #Load Registration Forms 
