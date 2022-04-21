@@ -67,6 +67,9 @@ def registerUser(response, accType):
                 return redirect('dashboard')
         else:
             return HttpResponse(json.dumps({'message': 'Invalid registration data'})) 
+    else:
+        return HttpResponse(json.dumps({'message': 'Invalid registration data'})) 
+
 
 
 
