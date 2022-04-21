@@ -144,7 +144,7 @@ def index(response):
     # Defult context for our page
     
     #Load Registration Forms 
-    context = {'registration_form': ClientRegistrationForm()}
+    context = {'registration_form': UserSelectionForm()}
     
     # Render defult page with updated context
     result = render(response, 'main/index.html', context) 
