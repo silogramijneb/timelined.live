@@ -48,8 +48,8 @@ def getTP(username):
 def registerUser(response): 
     form = ClientRegistrationForm(response.POST)
     if form.is_valid():
-        #user = form.save(commit=False) # Create the user object, but don't send it
-        form.save(commit=False) # benji test
+        user = form.save(commit=False) # Create the user object, but don't send it
+        # form.save(commit=False) # benji test
         #user.id = generateID(User)
         username = form.cleaned_data.get('username') # benji test
         raw_password = form.cleaned_data.get('password1') # benji test
@@ -149,6 +149,10 @@ def createEvent(request, context):
 ### Define more functions for queries (Not sure if this is the right file for this)
 
 def index(response):
+<<<<<<< HEAD
+=======
+
+>>>>>>> b07e9b6880131c66f7dd4025b5bee934c0892324
     # Defult context for our page
     
     #Load Registration Forms 
