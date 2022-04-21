@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.http import HttpResponse
 from main.models import User, Client, ServiceProvider, ThirdParty, Timeline, Event
-from .forms import ThirdPartyRegistrationForm, ClientRegistrationForm, ProfessionalRegistrationForm, ThirdPartyRegistrationForm, TimelineCreationForm, EventCreationForm, UserSelectionForm
+from .forms import ThirdPartyRegistrationForm, ClientRegistrationForm, ProfessionalRegistrationForm, ThirdPartyRegistrationForm, TimelineCreationForm, EventCreationForm, LoginForm
 from .decorators import unauthenticated_user 
 from .enums import EventStatus
 import json, random
@@ -138,7 +138,10 @@ def index(response):
     # Defult context for our page
     
     #Load Registration Forms 
-    context = {'registration_form': ClientRegistrationForm()}
+    context = {
+        'registration_form': ClientRegistrationForm(),
+        'login_form': LoginForm()
+        }
     
     # Render defult page with updated context
     result = render(response, 'main/index.html', context) 
