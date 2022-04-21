@@ -16,7 +16,7 @@
 				</h2>
 				<div id="collapse0" class="accordion-collapse collapse show" aria-labelledby="heading" data-bs-parent="#newTimeline">
 					<div class="accordion-body">
-						<form onsubmit="event.preventDefault(); validateForm();" id="timeline-event">
+						<form onsubmit="event.preventDefault()" id="timeline-event">
 							<div class="form-group mt-3 mb-3">
 								<select class="form-select" id="eventType">
 									<option selected>Event Type</option>
@@ -50,7 +50,7 @@
 								</select>
 							</div>
 							<div class="form-floating mb-3 text-center">
-								<button id="createEvent" class="btn btn-success rounded-pill px-3 mt-3 mb-lg-0" type="button" onsubmit="validateForm();">Create Event</button>
+								<button id="createEvent" class="btn btn-success rounded-pill px-3 mt-3 mb-lg-0" type="button" onsubmit="createNewEvent(0);">Create Event</button>
 							</div>
 						</form>
 					</div>
