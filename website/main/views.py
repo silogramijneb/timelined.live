@@ -58,6 +58,14 @@ def registerUser(response):
         user.save() 
         login(response, user)
         return redirect('dashboard')
+        # username = response.POST.get('username') # benji test
+        # password = response.POST.get('password1') # benji test
+        # user = authenticate(username=username, password=password) # benji test
+        # if user is not None: # benji test    
+        user.email = user.username
+        user.save() 
+        login(response, user)
+        return redirect('index')
     else:
         return HttpResponse(json.dumps({'message': 'Invalid registration data'})) 
 
