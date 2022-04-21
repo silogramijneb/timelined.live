@@ -30,22 +30,22 @@ def dashboard(response):
 
 def timeline(request):
 
-    context = {
-        "form": EventCreationForm(request.POST),
-        "maxEventNumbers": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
-    }
+    context = {}
     
     # POST: Update context
     if request.method == "POST":
         if request.POST.get("action") == 'update':
-            updateEvent(request, context)
+            #updateEvent(request, context)
 
     # POST: Save Form
     if request.method == "POST":
         if request.POST.get("action") == 'createEvent':
-            createEvent(request, context)
+            #createEvent(request, context)
             
-    result = render(request, "dashboard/timeline.html", context)            
+    result = render(request, "dashboard/timeline.html", {
+        'form': EventCreationForm(request.POST),
+        'maxEventNumbers': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
+    })            
     return result
 
 
