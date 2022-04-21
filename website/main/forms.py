@@ -209,7 +209,6 @@ class EventCreationForm(ModelForm):
             FloatingField('location', css_class='mb-3'),
             FloatingField('start_date', css_class='mb_3'),
             FloatingField('end_date', css_class='mb_3'),
-            #FloatingField('file', css_class='mb-3'),
             Div(
                 Submit('submit', 'create_event', css_class='btn btn-primary rounded-pill btn-lg', label='Create Event'),
                 css_class='d-grid'
