@@ -245,7 +245,8 @@
 						</form> {% endcomment %}
 						{% comment %} {% csrf_token %}
 						{% crispy login_form %} {% endcomment %}
-						{% crispy login_form %}
+						{% csrf_token %}
+						{% comment %} {% crispy login_form %} {% endcomment %}
 					</div>
 				</div>
 			</div>
