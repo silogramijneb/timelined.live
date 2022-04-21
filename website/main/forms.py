@@ -210,7 +210,7 @@ class EventCreationForm(ModelForm):
             FloatingField('start_date', css_class='mb_3'),
             FloatingField('end_date', css_class='mb_3'),
             Div(
-                Submit('submit', 'register', css_class='btn btn-primary rounded-pill btn-lg', label='Create_Event'),
+                Submit('submit', 'register', css_class='btn btn-primary rounded-pill btn-lg', label='Register'),
                 css_class='d-grid'
             )
         )
