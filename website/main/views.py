@@ -52,7 +52,7 @@ def registerUser(response, accType):
     if accType == 'Third Party':
         form = ThirdPartyRegistrationForm(response.POST)
     
-    if request.method == 'POST':
+    if response.method == 'POST':
         if form.is_valid():
             #user = form.save(commit=False) # Create the user object, but don't send it
             form.save(commit=False) # benji test
